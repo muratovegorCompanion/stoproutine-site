@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base href="/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="StopRoutine — AI implementation agency">
+<meta property="og:description" content="We remove routine from business with AI. We started with our own.">
+<meta property="og:image" content="https://stoproutine.com/s/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://stoproutine.com/en/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Analytics 4: вставьте сюда ID вида G-XXXXXXX, пока пусто — ничего не грузится и ничего не считается -->
+<meta name="ga-id" content="">
+<style>body{margin:0}[hidden]:not([hidden=until-found i]){display:none!important}img{max-width:100%}</style>
+<link rel="preload" as="image" href="s/poster.webp" media="(min-width:701px)">
+<link rel="preload" as="image" href="s/poster-m.webp" media="(max-width:700px)">
+<title>StopRoutine — AI implementation agency</title>
+<meta name="description" content="We remove routine from business with AI. We started with our own.">
+<link rel="alternate" hreflang="uk" href="https://stoproutine.com/">
+<link rel="alternate" hreflang="en" href="https://stoproutine.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://stoproutine.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap">
+<style>
+/* Layout: стиль сайта Компаньон. Главная = герой + сетка карточек проектов; у каждого проекта своя страница (#tender, #app…) */
+:root{
+  --ink:#142a46; --muted:#536478; --blue:#245dce; --lime:#c5f16b; --lime-soft:#edf8d6; --lime-ink:#31480f;
+  --paper:#f5f7fa; --surface:#ffffff; --line:#dce3eb;
+  --navy:#0f1c2e; --navy-soft:#16263c; --line-dark:#2c3f57; --muted-dark:#a9b7c9; --on-dark:#ffffff;
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ink:#e8eef6; --muted:#a9b7c9; --blue:#7ea6ff; --lime-soft:#24331a; --lime-ink:#d9f5a0;
+  --paper:#0b1524; --surface:#122035; --line:#24364f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ink:#e8eef6; --muted:#a9b7c9; --blue:#7ea6ff; --lime-soft:#24331a; --lime-ink:#d9f5a0;
+  --paper:#0b1524; --surface:#122035; --line:#24364f; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;letter-spacing:-.03em;text-wrap:balance;font-weight:700;line-height:1.12}
+p{margin:0}
+em.s{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.01em}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.shell{max-width:1180px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .3s var(--ease);cursor:pointer;border:0;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.btn-lime{background:var(--lime);color:#142a46}
+.btn-ghost{border:1px solid var(--line-dark);color:var(--on-dark);background:transparent}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.h2{font-size:clamp(1.9rem,3.4vw,2.8rem)}
+.view[hidden]{display:none!important}
+
+/* HERO */
+.hero{position:relative;background:var(--navy);color:var(--on-dark);overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url(img/city.jpg) center/cover;opacity:.28;filter:saturate(.8)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,28,46,.96) 35%,rgba(15,28,46,.55))}
+.hero .shell{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;padding-block:72px 64px}
+.hero h1{font-size:clamp(2.4rem,5vw,4rem);letter-spacing:-.05em;margin:22px 0}
+.hero h1 em{color:var(--lime)}
+.hero .lead{font-size:1.2rem;color:var(--muted-dark);max-width:34em}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.portrait{margin:0;border-radius:24px;overflow:hidden;background:var(--navy-soft);border:1px solid var(--line-dark);max-width:360px;justify-self:end;width:100%}
+.portrait img{width:100%;height:380px;object-fit:cover;object-position:top}
+.portrait figcaption{padding:18px 22px;display:flex;flex-direction:column;gap:2px}
+.portrait b{font-size:1.1rem}
+.portrait span{color:var(--muted-dark);font-size:.9rem}
+.proofbar{position:relative;z-index:1;border-top:1px solid var(--line-dark)}
+.proofbar .shell{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-block:28px}
+.proofbar div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.proofbar b{font-size:1.9rem;letter-spacing:-.04em;color:var(--lime);font-variant-numeric:tabular-nums}
+.proofbar span{font-size:.9rem;color:var(--muted-dark)}
+
+/* PAINS */
+.pains{padding-block:80px 24px}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.pain{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.pain q{font-size:1.15rem;font-weight:600;quotes:"«" "»"}
+.pain p{color:var(--muted);font-size:.98rem}
+
+/* PROJECT CARDS */
+.projects{padding-block:64px 80px;display:flex;flex-direction:column;gap:32px}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .3s var(--ease),box-shadow .3s;min-width:0}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(20,42,70,.14)}
+.pcard .thumb{position:relative;height:250px;background:var(--navy);overflow:hidden}
+.pcard .thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pcard .thumb .tag{position:absolute;left:16px;top:16px}
+.pcard .body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.pcard h3{font-size:1.45rem}
+.pcard dl{margin:0;display:grid;gap:10px}
+.pcard dt{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.pcard dd{margin:2px 0 0;font-size:.97rem;color:var(--muted)}
+.pcard .more{margin-top:auto;font-weight:600;display:inline-flex;gap:8px;align-items:center}
+.pcard .more::after{content:"→";transition:transform .3s var(--ease)}
+.pcard:hover .more::after{transform:translateX(4px)}
+.pcard.wide{grid-column:1/-1}
+.pcard.wide{flex-direction:row}
+.pcard.wide .thumb{height:auto;min-height:280px;flex:1 1 50%}
+.pcard.wide .body{flex:1 1 50%}
+.tag{align-self:flex-start;font-size:.78rem;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--lime);color:#142a46}
+.tag.soft{background:var(--lime-soft);color:var(--lime-ink)}
+
+/* STEPS / PROMISES / CTA */
+.how{background:var(--surface);border-block:1px solid var(--line);padding-block:80px}
+.steps{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px;padding:28px;border-radius:20px;background:var(--paper);border:1px solid var(--line);min-width:0}
+.steps li::before{content:counter(s);width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-weight:700;margin-bottom:8px}
+.steps h3{font-size:1.3rem}
+.steps p{color:var(--muted)}
+.promises{padding-block:80px}
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
+.rgrid div{display:flex;flex-direction:column;gap:8px;min-width:0;border-top:3px solid var(--lime);padding-top:16px}
+.rgrid b{font-size:1.1rem}
+.rgrid p{color:var(--muted);font-size:.95rem}
+.cta{background:var(--navy);color:var(--on-dark);padding-block:88px}
+.cta .shell{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center}
+.cta h2{font-size:clamp(2rem,4vw,3.3rem);letter-spacing:-.045em}
+.cta h2 em{color:var(--lime)}
+.cta p{color:var(--muted-dark);font-size:1.1rem;margin-top:18px;max-width:30em}
+.cta .box{background:var(--navy-soft);border:1px solid var(--line-dark);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.cta .box span{color:var(--muted-dark);font-size:.9rem}
+.cta .box code{font-family:var(--font);font-size:1.3rem;font-weight:700;color:#fff;user-select:all}
+
+/* DETAIL PAGE */
+.topbar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--navy);color:var(--on-dark);border-bottom:1px solid var(--line-dark)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:30;background:var(--navy)}
+.topbar .shell{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:12px}
+.back{color:var(--on-dark);text-decoration:none;font-weight:600;display:inline-flex;gap:8px;align-items:center;cursor:pointer;background:none;border:0;font:inherit;font-size:.95rem;padding:6px 0}
+.back::before{content:"←"}
+.topbar .who{font-size:.85rem;color:var(--muted-dark)}
+.dhero{background:var(--navy);color:var(--on-dark);padding-block:56px 64px}
+.dhero .shell{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.dhero .shell > *,.hero .shell > *,.cta .shell > *{min-width:0}
+.dhero h1{font-size:clamp(2.2rem,4.4vw,3.6rem);letter-spacing:-.05em;margin:18px 0}
+.dhero h1 em{color:var(--lime)}
+.dhero .lead{font-size:1.15rem;color:var(--muted-dark)}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.meta span{font-size:.85rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line-dark);color:var(--muted-dark)}
+.meta span b{color:#fff;font-weight:600}
+.dmedia{border-radius:20px;overflow:hidden;border:1px solid var(--line-dark);background:#000;min-width:0}
+.dmedia img,.dmedia video{width:100%;height:auto}
+.dsec{padding-block:64px;border-bottom:1px solid var(--line)}
+.dsec:last-of-type{border-bottom:0}
+.dsec .grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:28px}
+.dsec .grid2 > *{min-width:0}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.ba > div{border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.ba .was{background:var(--surface);border:1px solid var(--line)}
+.ba .now{background:var(--lime-soft);border:1px solid transparent}
+.ba h3{font-size:1.15rem}
+.ba ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.flow{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;counter-reset:f}
+.flow li{counter-increment:f;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.flow li::before{content:counter(f);font-weight:800;color:var(--blue);font-size:1.4rem;letter-spacing:-.03em}
+.flow b{font-size:1.05rem}
+.flow p{color:var(--muted);font-size:.95rem}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.feat div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.feat b{font-size:1.02rem}
+.feat p{color:var(--muted);font-size:.93rem}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px}
+.gallery figure{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.gallery img{width:100%;border-radius:16px;border:1px solid var(--line)}
+.gallery figcaption{font-size:.9rem;color:var(--muted)}
+.gallery.phones3{grid-template-columns:repeat(3,1fr);max-width:820px}
+.gallery.phones3 img{border-radius:22px;border:5px solid var(--ink)}
+.note{margin-top:24px;padding:18px 22px;border-radius:16px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--blue);font-size:.97rem}
+.note b{display:block;margin-bottom:4px}
+.urls{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.urls a{display:inline-flex;gap:8px;align-items:center;padding:10px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:.95rem}
+.urls a::after{content:"↗";color:var(--blue)}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stack span{font-size:.82rem;padding:5px 11px;border-radius:8px;background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+.next{padding-block:56px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+.next h3{font-size:1.5rem}
+
+/* chat mock */
+.chat{background:linear-gradient(160deg,#16263c,#0f1c2e);padding:26px;display:flex;flex-direction:column;gap:10px;font-size:.92rem;line-height:1.45;border-radius:20px;border:1px solid var(--line-dark)}
+.chat .who{font-size:.72rem;color:#a9b7c9;letter-spacing:.06em;text-transform:uppercase}
+.msg{max-width:85%;padding:10px 14px;border-radius:16px}
+.msg.agent{background:#245dce;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.them{background:#273f5d;color:#fff;align-self:flex-start;border-bottom-left-radius:4px}
+.msg.owner{background:#c5f16b;color:#142a46;align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+.chat .cap{font-size:.72rem;color:#a9b7c9;text-align:center;margin-top:6px}
+
+@media (max-width:900px){
+  .hero .shell,.cta .shell,.dhero .shell,.dsec .grid2{grid-template-columns:1fr}
+  .portrait{justify-self:start;max-width:300px}
+  .portrait img{height:300px}
+  .proofbar .shell,.rgrid{grid-template-columns:1fr 1fr}
+  .pain-grid,.steps,.pgrid,.ba,.feat{grid-template-columns:1fr}
+  .pcard.wide{flex-direction:column}
+  .pcard.wide .thumb{min-height:240px}
+  .gallery{grid-template-columns:1fr}
+  .gallery.phones3{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:420px){.proofbar .shell,.rgrid{grid-template-columns:1fr}.actions .btn{width:100%;justify-content:center}.gallery.phones3 img{border-width:3px;border-radius:14px}}
+@media (prefers-reduced-motion:reduce){.btn,.pcard,.pcard .more::after{transition:none}}
+
+/* Лёгкая главная */
+.lh-hero{background:var(--navy);color:var(--on-dark)}
+.lh-hero .shell{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;padding-block:56px}
+.lh-hero .shell > *{min-width:0}
+.lh-hero img{width:230px;height:290px;border-radius:22px;object-fit:cover;object-position:50% 12%;border:1px solid var(--line-dark);background:var(--navy-soft)}
+.lh-hero h1{font-size:clamp(2rem,4.2vw,3.2rem);letter-spacing:-.045em}
+.lh-hero h1 em{color:var(--lime)}
+.lh-hero p{color:var(--muted-dark);font-size:1.1rem;margin-top:14px;max-width:36em}
+.lh-hero .btn{margin-top:22px}
+.lh-label{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lh-projects{padding-block:56px 64px;display:flex;flex-direction:column;gap:24px}
+.lh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lh-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .3s var(--ease),box-shadow .3s;min-width:0}
+.lh-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(20,42,70,.12)}
+.lh-card img{width:100%;height:180px;object-fit:cover;object-position:top;background:var(--navy)}
+.lh-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.lh-card h3{font-size:1.15rem}
+.lh-card p{font-size:.95rem;color:var(--muted)}
+.lh-more{margin-top:auto;padding-top:6px;font-weight:600;font-size:.92rem;color:var(--blue)}
+.lcta{background:var(--navy);color:var(--on-dark);padding-block:56px}
+.lcta .shell{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+.lcta h2{font-size:clamp(1.5rem,3vw,2.2rem);max-width:22em}
+@media (max-width:900px){.lh-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.lh-grid{grid-template-columns:1fr}.lh-hero .shell{grid-template-columns:1fr;gap:20px}.lh-hero img{width:180px;height:225px}}
+@media (prefers-reduced-motion:reduce){.lh-card{transition:none}}
+.lh-niche{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.lh-niche span{font-size:.85rem;padding:5px 12px;border-radius:999px;border:1px solid var(--line-dark);color:var(--muted-dark)}
+.lh-niche span:first-child{border:0;padding-left:0;color:var(--lime);font-weight:600}
+.lh-hero .acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:22px}
+.lh-hero .acts .btn{margin-top:0}
+.btn-ghost{border:1px solid var(--line-dark);color:var(--on-dark);background:transparent}
+.lh-steps .time{font-size:.85rem;font-weight:600;color:var(--blue)}
+.lh-about{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.lh-about > *{min-width:0}
+.lh-about p{color:var(--muted);margin-top:12px}
+.lh-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.lh-facts div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0}
+.lh-facts b{display:block;font-size:1.6rem;letter-spacing:-.03em;color:var(--blue)}
+.lh-facts span{font-size:.88rem;color:var(--muted)}
+.lcta .side{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.lcta small{color:var(--muted-dark);font-size:.88rem}
+@media (max-width:900px){.lh-about{grid-template-columns:1fr}}
+@media (max-width:480px){.lh-facts{grid-template-columns:1fr}}
+.lh-faq{display:flex;flex-direction:column;gap:10px;max-width:46em}
+.lh-faq details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
+.lh-faq summary{cursor:pointer;font-weight:600}
+.lh-faq p{margin-top:10px;color:var(--muted);font-size:.97rem}
+
+/* Продающие блоки главной */
+.lh-sec{padding-block:56px;display:flex;flex-direction:column;gap:22px}
+.lh-sec h2{font-size:clamp(1.6rem,3vw,2.3rem);max-width:20em}
+.lh-gets{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.lh-gets div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.lh-gets i{font-style:normal;width:40px;height:40px;border-radius:12px;background:var(--lime);color:#142a46;display:grid;place-items:center;font-weight:800;font-size:1.1rem}
+.lh-gets b{font-size:1.05rem;line-height:1.3}
+.lh-gets p{font-size:.93rem;color:var(--muted)}
+.lh-auto{background:var(--navy);color:var(--on-dark)}
+.lh-auto .lh-label{color:var(--lime)}
+.lh-tasks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 28px;list-style:none;margin:0;padding:0}
+.lh-tasks li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--muted-dark);min-width:0}
+.lh-tasks li::before{content:"✓";color:var(--lime);font-weight:800}
+.lh-tasks b{color:#fff;font-weight:600}
+.lh-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;margin:0;padding:0;counter-reset:k}
+.lh-steps li{counter-increment:k;border-top:3px solid var(--lime);padding-top:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.lh-steps li::before{content:"Step " counter(k);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.lh-steps b{font-size:1.15rem}
+.lh-steps p{color:var(--muted);font-size:.95rem}
+.lh-steps .get{color:var(--ink);font-weight:600;font-size:.93rem}
+@media (max-width:900px){.lh-gets{grid-template-columns:1fr 1fr}.lh-tasks,.lh-steps{grid-template-columns:1fr}}
+@media (max-width:480px){.lh-gets{grid-template-columns:1fr}}
+
+/* Главная — один непрерывный фильм: видео стоит фоном всю страницу, текст плывёт слева поверх него */
+#v-home{position:relative;background:#05080d;color:#e8eef6;
+  --ink:#e8eef6;--muted:#a9b7c9;--blue:#a9c2ff;--surface:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);--paper:#05080d;--lime-soft:rgba(197,241,107,.12);--lime-ink:#d9f5a0}
+.reel{position:fixed;inset:0;z-index:0;pointer-events:none;background:#05080d url(s/poster.webp) center/cover no-repeat}
+@media (max-width:700px){.reel{background-image:url(s/poster-m.webp);background-size:166.67% auto;background-position:right 0 top 6vh}}
+.reel canvas{width:100%;height:100%;display:block}
+.reel-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,13,.8) 0%,rgba(5,8,13,.35) 40%,rgba(5,8,13,0) 62%)}
+.reel-flow{position:relative;z-index:2}
+.reel-flow .shell{max-width:min(600px,46vw);margin-left:max(20px,5vw);margin-right:auto}
+.pan{background:rgba(7,12,20,.74);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:32px!important}
+#v-home .lh-hero,#v-home .lh-auto{background:transparent}
+#v-home .lh-hero .shell,#v-home .lh-auto .lh-sec,#v-home .lh-sec{margin-block:28vh}
+#v-home .lh-hero .shell{grid-template-columns:150px 1fr;gap:24px;padding-block:32px}
+#v-home .lh-hero img{width:150px;height:190px}
+#v-home .lh-gets{grid-template-columns:1fr 1fr}
+#v-home .lh-tasks,#v-home .lh-steps,#v-home .lh-about{grid-template-columns:1fr}
+#v-home .lh-steps .get{color:var(--lime)}
+#v-home .lh-gets div,#v-home .lh-facts div,#v-home .lh-faq details{background:var(--surface);border-color:var(--line)}
+/* Пока стоит неподвижная таблица, текст занимает 2/3 экрана */
+.reel-flow .shell.wide{max-width:min(66vw,1180px)}
+.reel-flow .wide .lh-gets{grid-template-columns:repeat(4,1fr)}
+@media (min-width:901px){#v-home .lh-hero .shell.wide{grid-template-columns:200px 1fr;gap:36px}#v-home .lh-hero .wide img{width:200px;height:250px}}
+@media (max-width:1100px){.reel-flow .wide .lh-gets{grid-template-columns:1fr 1fr}}
+/* Точки связи */
+.reel-flow .open-cta{margin-top:26px;padding:13px 22px;font-size:15px}
+.cta-inline{align-self:flex-start;margin-top:6px}
+.unfold-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px}
+.unfold-head .btn{padding:12px 20px;font-size:15px}
+.reel-flow .cap.finale{position:relative;min-height:160vh}
+.finale .mk{position:absolute;top:50vh}
+.finale .shell{opacity:var(--fin,0);transform:translateY(calc((1 - var(--fin,0))*24px))}
+.finale-acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:28px}
+.finale-acts span{color:rgba(255,255,255,.6);font-size:.95rem}
+.finale .btn{font-size:18px;padding:18px 30px;box-shadow:0 0 40px rgba(197,241,107,.35)}
+/* на главной финал заменяет общий нижний блок, который иначе прячется под видео */
+#v-home:not([hidden]) ~ .lcta{display:none}
+/* Подписи-главы */
+.reel-flow .cap{min-height:115vh;display:flex;align-items:center}
+.reel-flow .cap small{display:block;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);margin-bottom:14px}
+.reel-flow .cap h2{font-size:clamp(2.4rem,6.4vw,5.6rem);font-weight:300;letter-spacing:-.04em;line-height:.98;text-transform:uppercase;color:#fff}
+.reel-flow .cap h2 i{font-style:normal;color:rgba(255,255,255,.38)}
+.reel-flow .cap p{margin-top:18px;color:rgba(255,255,255,.75);font-size:1.05rem;max-width:30em}
+.reel-flow .cap-open{position:relative;min-height:100vh}
+.reel-flow .cap-open .mk{position:absolute;top:50vh}
+.hint{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:opacity .4s}
+.mk{display:block;height:0}
+/* Выбор проекта: панель разворачивается из окошка на весь экран */
+.pick{height:220vh;margin-top:-60vh;position:relative;--u:0} /* заходит под уходящий текст: превращение начинается сразу, без пустого экрана */
+.unfold{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
+.unfold::before{content:"";position:absolute;inset:0;background:rgba(5,8,13,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);opacity:var(--u)}
+.unfold-in{position:relative}
+.unfold-in > .lh-label,.unfold-in > .unfold-head,.unfold-in > .lh-card{opacity:calc(var(--u)*2.5 - 1.5)}
+.unfold-in{pointer-events:none}.unfold-in .lh-card,.unfold-in .btn{pointer-events:auto}
+#v-home .unfold .lh-grid .lh-card{transform-origin:0 0;will-change:transform;transition:none;opacity:0}
+.unfold-in{width:100%;max-width:1180px;margin:0 auto;padding:64px max(20px,4vw) 44px;display:flex;flex-direction:column;gap:14px}
+.unfold h2{font-size:clamp(1.8rem,3.4vw,2.6rem);color:#fff}
+#v-home .unfold .lh-grid{grid-template-columns:repeat(3,1fr);gap:16px}
+#v-home .unfold .lh-card{background:var(--surface);border-color:var(--line)}
+#v-home .unfold .lh-card img{height:clamp(90px,17vh,150px)}
+#v-home .unfold .lh-body{padding:14px 16px 16px;gap:6px}
+#v-home .unfold .lh-card p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#v-home .unfold > .unfold-in > .lh-card .lh-body{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:12px 16px}
+#v-home .unfold .lh-card h3{color:#fff}
+#v-home .unfold .lh-more{color:var(--lime)}
+#v-home .unfold .lh-card:hover{box-shadow:0 0 0 1px var(--lime),0 18px 40px rgba(0,0,0,.4)}
+/* Шапка и линейка поверх фильма */
+.reel-top{position:fixed;left:0;right:0;top:0;z-index:4;display:flex;justify-content:space-between;gap:16px;padding:20px max(20px,4vw);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);pointer-events:none;background:linear-gradient(180deg,rgba(5,8,13,.7),rgba(5,8,13,0))}
+.reel-top b{color:#fff;font-weight:600}
+.reel-nav{display:flex;gap:18px}
+.reel-nav span.on{color:var(--lime)}
+.reel-ruler{position:fixed;left:max(20px,4vw);right:max(20px,4vw);bottom:18px;height:20px;z-index:4;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0 1px,transparent 1px 10px);-webkit-mask:linear-gradient(0deg,#000 40%,transparent 40%);mask:linear-gradient(0deg,#000 40%,transparent 40%)}
+.reel-ruler i{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+.reel-ruler em{position:absolute;right:0;bottom:12px;font-style:normal;font-size:.68rem;letter-spacing:.14em;color:rgba(255,255,255,.45)}
+@media (max-width:1100px){.reel-nav{display:none}}
+/* Language switch */
+.lang{display:flex;gap:.5em;flex:none;white-space:nowrap;pointer-events:auto}
+.lang a{color:inherit;text-decoration:none}
+.lang a.on{color:var(--lime)}
+.reel-top > span:first-child{min-width:0}
+.topbar .lang{font-size:.85rem;color:var(--muted-dark)}
+.topbar .who{margin-left:auto;min-width:0;text-align:right}
+@media (max-width:900px){
+  .reel-shade{background:linear-gradient(0deg,rgba(5,8,13,.92) 0%,rgba(5,8,13,.6) 42%,rgba(5,8,13,0) 62%)}
+  .reel-flow .shell{margin-left:16px;margin-right:16px;max-width:none}
+  .reel-flow .shell.wide{max-width:none}
+  .reel-flow .cap{align-items:flex-end;padding-bottom:14vh}
+  #v-home .unfold .lh-grid{grid-template-columns:1fr 1fr;gap:10px}
+  #v-home .unfold .lh-card p,#v-home .unfold .lh-more{display:none}
+  #v-home .unfold .lh-card img{height:clamp(70px,11vh,110px)}
+  #v-home .unfold .lh-card h3{font-size:.95rem}
+  .unfold-in{padding:60px 16px 40px}
+  .unfold-head .btn{padding:9px 14px;font-size:13px}
+  .pick{margin-top:-15vh}
+  #v-home .lh-hero .shell,#v-home .lh-auto .lh-sec,#v-home .lh-sec{margin-block:45vh 20vh}
+  .pan{padding:22px!important}
+}
+@media (max-width:480px){#v-home .lh-gets{grid-template-columns:1fr}#v-home .lh-hero .shell{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ============ ГЛАВНАЯ ============ -->
+<main class="view" id="v-home">
+  <div class="reel" aria-hidden="true"><canvas id="reel"></canvas><div class="reel-shade"></div></div>
+  <div class="reel-top"><span><b>StopRoutine</b> · AI implementation</span><span class="reel-nav"><span>01 Chaos</span><span>02 Breakdown</span><span>03 Order</span><span>04 Projects</span><span>05 System</span><span>06 Your move</span></span><span class="lang" aria-label="Language"><a href="/" hreflang="uk" lang="uk">UA</a><span aria-hidden="true">·</span><a href="/en/" hreflang="en" lang="en" class="on" aria-current="page">EN</a></span></div>
+  <div class="reel-ruler"><i id="reel-bar"></i><em id="reel-load"></em></div>
+  <div class="reel-flow" id="flow">
+  <section class="cap cap-open"><i class="mk" data-f="0"></i><div class="shell"><small>01 / Chaos</small><h2>Excel,<br>contracts,<br><i>messages</i></h2><p>10–15 files from different partners, each with its own structure. An employee merges them by hand and worries about missing a line in a note.</p><a class="btn btn-lime open-cta" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Free 30-minute review →</a></div><div class="hint" id="reel-hint">Scroll ↓</div></section>
+  <i class="mk" data-f="48"></i>
+  <section class="cap"><div class="shell"><small>02 / Breakdown</small><h2>AI<br>sorts<br><i>it out</i></h2><p>Every condition in its place: covered, covered with a limit, not covered, unclear. Where the system isn't sure, it says so.</p></div></section>
+  <i class="mk" data-f="95"></i>
+  <section class="cap"><div class="shell"><small>03 / Order</small><h2>One<br>table</h2><p>Every figure links to a sheet and a cell of the source file. You can check it in one click.</p></div></section>
+  <i class="mk" data-f="140"></i>
+<section class="lh-hero"><div class="shell pan wide">
+    <img src="img/egor.jpg" alt="Egor Muratov">
+    <div>
+      <h1>We remove routine from business with&nbsp;AI. <em class="s">We started with our own.</em></h1>
+      <p>StopRoutine is an AI implementation agency. Its founder and director is Egor Muratov, owner of the insurance broker Companion. Here is what already works in his companies.</p>
+      <div class="lh-niche"><span>Who it's for:</span><span>insurance and finance</span><span>real estate and rentals</span><span>businesses that live in Excel and 1C</span></div>
+      <div class="acts">
+        <a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Free 30-minute review →</a>
+        <a class="btn btn-ghost" href="#projects" data-go="home">See projects</a>
+      </div>
+    </div>
+  </div></section>
+  <i class="mk" data-f="149"></i>
+<section class="lh-sec shell pan wide">
+    <span class="lh-label">What you get</span>
+    <h2>Your staff work with clients, and AI does the routine</h2>
+    <div class="lh-gets">
+      <div><i>⏱</i><b>Less manual work</b><p>Summaries, reconciliations and retyping from file to file happen on their own.</p></div>
+      <div><i>💬</i><b>Client answers 24/7</b><p>The assistant answers routine questions at night and on weekends, based on your documents.</p></div>
+      <div><i>✓</i><b>Figures without errors</b><p>Every number can be checked against its source. If there is no data, the system says so.</p></div>
+      <div><i>🔒</i><b>Everything under control</b><p>Nothing goes to clients without your OK. You see what the AI is doing.</p></div>
+    </div>
+  </section>
+  <i class="mk" data-f="152"></i>
+  <section class="cap"><div class="shell"><small>04 / Projects</small><h2>Six<br>projects<br><i>from the founder's companies</i></h2><p>Each one started with a routine that was eating the team's time.</p></div></section>
+  <i class="mk" data-f="244"></i>
+  <section class="pick" id="projects"><div class="unfold">
+    <div class="unfold-in">
+      <span class="lh-label">Projects</span>
+      <div class="unfold-head"><h2>Choose a project</h2><a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Discuss your task →</a></div>
+    <div class="lh-grid">
+      <a class="lh-card" href="#app" data-go="app"><img src="img/app-poster.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Corporate health insurance app with an AI chat</h3><p>Tells an employee whether the insurance covers their diagnosis or test.</p><span class="lh-more">Learn more →</span></div></a>
+      <a class="lh-card" href="#tender" data-go="tender"><img src="img/tender-poster.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Tender comparison</h3><p>Merges Excel offers from 10–15 insurers into one table.</p><span class="lh-more">Learn more →</span></div></a>
+      <a class="lh-card" href="#contracts" data-go="contracts"><img src="img/contracts.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Contract review</h3><p>Finds where the insurer departed from the required terms and prepares the edits.</p><span class="lh-more">Learn more →</span></div></a>
+      <a class="lh-card" href="#uchet" data-go="uchet"><img src="img/uchet-contract.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Accounting instead of 1C</h3><p>Calculates managers' commission and reconciles insurer reports with the bank on its own.</p><span class="lh-more">Learn more →</span></div></a>
+      <a class="lh-card" href="#villa" data-go="villa"><img src="img/villa-index.jpg" alt="" loading="lazy"><div class="lh-body"><h3>AI villa manager</h3><p>Arranges cleaning with the cleaner and drafts replies to Airbnb guests on its own.</p><span class="lh-more">Learn more →</span></div></a>
+      <a class="lh-card" href="#site" data-go="site"><img src="img/site-home.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Website with inquiries</h3><p>Every inquiry arrives in Telegram with its ad source.</p><span class="lh-more">Learn more →</span></div></a>
+    </div>
+    <a class="lh-card" href="#more" data-go="more"><div class="lh-body"><h3>And small things</h3><p>A maths game for the founder's daughter, a hall's website, a keyboard-layout fix for Mac.</p><span class="lh-more">See →</span></div></a>
+    </div>
+  </div></section>
+  <i class="mk" data-f="249"></i>
+  <section class="cap"><div class="shell"><small>05 / System</small><h2>Works<br><i>on its own</i></h2><p>Summaries, reconciliations and replies happen without you. Nothing goes to clients without your OK.</p></div></section>
+  <i class="mk" data-f="330"></i>
+<section class="lh-auto"><div class="lh-sec shell pan">
+    <span class="lh-label">What can be automated</span>
+    <h2>If it repeats every day, it can be handed to AI</h2>
+    <ul class="lh-tasks">
+      <li><span><b>Comparing offers</b> from suppliers and partners in different formats</span></li>
+      <li><span><b>Answers to clients</b> based on contracts, terms and instructions</span></li>
+      <li><span><b>Contract review</b> for departures from your terms</span></li>
+      <li><span><b>Accounting and reconciliations</b> instead of old 1C and Excel</span></li>
+      <li><span><b>Correspondence with contractors</b>: agree, remind, check</span></li>
+      <li><span><b>Website inquiries</b> straight to Telegram with the ad source</span></li>
+    </ul>
+    <a class="btn btn-lime cta-inline" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Review my routine →</a>
+  </div></section>
+  <i class="mk" data-f="369"></i>
+<section class="lh-sec shell pan">
+    <span class="lh-label">How we start</span>
+    <h2>Three steps, and at each one it is clear what you get</h2>
+    <ol class="lh-steps">
+      <li><b>Review</b><span class="time">30 minutes free · full department audit from $1,500, credited to the pilot</span><p> We look at where the team loses the most time.</p><span class="get">You get a plan: what to automate first and what the benefit will be.</span></li>
+      <li><b>Pilot</b><span class="time">from $4,500 · 3–4 weeks · price and timeline fixed before the start</span><p>We automate one process using your real data.</p><span class="get">You get a working tool at a fixed price and timeline.</span></li>
+      <li><b>Growth</b><span class="time">from $450/month · when you are ready</span><p>We monitor the work, refine it and connect the next processes.</p><span class="get">You get a system that grows with your business.</span></li>
+    </ol>
+    <a class="btn btn-lime cta-inline" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Book a review →</a>
+  </section>
+  <i class="mk" data-f="410"></i>
+<section class="lh-sec shell pan">
+    <div class="lh-about">
+      <div>
+        <span class="lh-label">About us</span>
+        <h2 style="margin-top:14px">An agency led by an entrepreneur who automated his own companies first</h2>
+        <p>StopRoutine's founder and director, Egor Muratov, runs the insurance broker Companion, which has been on the market for 12 years. In 2026 he moved its routine to AI: tenders, accounting, contracts, client answers. That is why Egor speaks to you as one owner to another, and we offer only what pays off.</p>
+        <p>We work under an NDA. We take access only to the data the task needs.</p>
+      </div>
+      <div class="lh-facts">
+        <div><b>15 000+</b><span>insured with Companion</span></div>
+        <div><b>70+</b><span>Companion's client companies</span></div>
+        <div><b>~97%</b><span>of Companion's clients renew their contract</span></div>
+      </div>
+    </div>
+  </section>
+  <i class="mk" data-f="440"></i>
+<section class="lh-sec shell pan">
+    <span class="lh-label">Frequently asked questions</span>
+    <h2>What people usually ask before starting</h2>
+    <div class="lh-faq">
+      <details><summary>How much does it cost?</summary><p>The first 30-minute call is free. A full department audit starts at $1,500 and is credited to the pilot. A single-process pilot starts at $4,500 and takes 3–4 weeks; support and growth start at $450 per month. We fix the exact pilot price and timeline before any work begins.</p></details>
+      <details><summary>What happens to my clients' data?</summary><p>We sign an NDA before you show us any documents. Nothing goes to clients without your OK, and every number in the reports can be checked against the source file.</p></details>
+      <details><summary>Do I need my own programmer?</summary><p>No. We set up and launch everything ourselves; you only need to explain how the process works today.</p></details>
+      <details><summary>What happens after launch?</summary><p>We monitor the work, fix errors and connect the next processes if you want.</p></details>
+      <details><summary>What if the AI makes a mistake?</summary><p>Where accuracy matters, a person checks the result. If data is missing, the system says so rather than guessing.</p></details>
+    </div>
+  </section>
+  <i class="mk" data-f="466"></i>
+  <section class="cap finale" id="finale"><i class="mk" data-f="549"></i><div class="shell">
+    <small>06 / Your move</small>
+    <h2>What eats<br>your <i>time?</i></h2>
+    <p>Tell us in 30 minutes, and we'll show you for free what can be handed to AI and where to start.</p>
+    <div class="finale-acts"><a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Book a review →</a><span>Telegram: @EgorMuratov</span></div>
+  </div></section>
+  </div>
+</main>
+
+<!-- ============ ПРИЛОЖЕНИЕ ============ -->
+<main class="view" id="v-app" hidden>
+  <section class="dhero"><div class="shell">
+    <div>
+      <span class="tag">Health insurance · for broker clients</span>
+      <h1>Health insurance app: <em class="s">an insurance consultant in your pocket</em></h1>
+      <p class="lead">A mobile app for employees of companies insured by Companion. People find out for themselves what their insurance covers, find a clinic and get help if they are refused.</p>
+      <div class="meta"><span>Status: <b>under App Store review</b></span><span>Platforms: <b>iOS, Android</b></span><span>Language: <b>Ukrainian</b></span></div>
+    </div>
+    <div class="dmedia"><video src="video/app-wide.mp4" poster="img/app-poster.jpg" controls muted playsinline preload="none"></video></div>
+  </div></section>
+
+  <section class="dsec shell">
+    <span class="eyebrow">What was optimized</span>
+    <h2 class="h2" style="margin-top:16px">Questions that used to go to a manager</h2>
+    <div class="ba">
+      <div class="was"><h3>Before</h3><ul><li>The client's employee calls the broker's manager: “is this test covered”, “which clinic can I go to”.</li><li>The policy and the program sit as a PDF somewhere in HR's mailbox.</li><li>After a payment refusal, the person cannot tell whether the insurer is right.</li></ul></div>
+      <div class="now"><h3>After</h3><ul><li>An answer in the chat within seconds, based on the documents of their own program.</li><li>Policy, coverage, limits and clinics are always on the phone.</li><li>When a claim is refused, the AI checks the refusal against the program terms and passes the disputed case to the broker.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="dsec shell">
+    <span class="eyebrow">How the AI chat works</span>
+    <div class="grid2">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h2 class="h2">Answers only from your program's documents</h2>
+        <p>A person writes a question in ordinary words, for example naming a diagnosis or a test. The system finds the relevant passages in that employee's own contract and insurance program and answers: covered or not, with what limit, at which clinics, and what to do next.</p>
+        <p>If the documents have no answer, the AI says so and suggests writing to the broker. It does not diagnose or advise treatment: it is a guide to the insurance, not a doctor.</p>
+        <p>A separate scenario for refusals. If a service was not paid for, the AI checks what the program says, and if the refusal contradicts the terms, it says so directly and passes the case to the broker's team.</p>
+      </div>
+      <div class="chat" role="img" aria-label="Example dialogue in the AI chat">
+        <span class="who">AI chat · example</span>
+        <div class="msg them">Is a knee MRI covered? The doctor gave me a referral.</div>
+        <div class="msg agent">Yes, under your program an MRI is covered when medically indicated.<br><br>What to do: call Assistance to approve the scan and get a referral to a clinic from your program.</div>
+        <div class="msg them">And if Assistance refuses?</div>
+        <div class="msg agent">Send me the reason for the refusal and I will check it against the program terms. If you disagree with the decision, the broker's team will review it.</div>
+        <span class="cap">Illustration of an answer, wording simplified</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="dsec shell">
+    <span class="eyebrow">What else is inside</span>
+    <h2 class="h2" style="margin-top:16px">Everything about your insurance in one place</h2>
+    <div class="feat">
+      <div><b>Sign-in in a minute</b><p>By phone number, the code arrives in Telegram. No passwords.</p></div>
+      <div><b>My policy</b><p>The program, validity period, what is covered, limits and the contract itself.</p></div>
+      <div><b>Clinics</b><p>Only those included in the program, with their classes and a route in Google Maps.</p></div>
+      <div><b>Test results from a photo</b><p>The AI reads the lab form, flags deviations from that laboratory's norms and suggests which doctor to see. Files are not stored anywhere.</p></div>
+      <div><b>Booking and help</b><p>Contact with the insurer's assistance service by phone, Viber or Telegram.</p></div>
+      <div><b>Broker on hand</b><p>Coverage refused or something went wrong: the request goes straight to Companion's team.</p></div>
+      <div><b>Relatives</b><p>A request to insure family members and a list of what the program does not cover.</p></div>
+      <div><b>Reimbursements</b><p>Which documents are needed to get money back for what you paid yourself.</p></div>
+      <div><b>HR dashboard</b><p>The client company's HR sees its insured employees and requests.</p></div>
+    </div>
+  </section>
+
+  <section class="dsec shell">
+    <span class="eyebrow">Screens</span>
+    <div class="gallery phones3">
+      <figure><img src="img/app-login.jpg" alt="Sign-in screen" loading="lazy"><figcaption>Sign-in through Telegram</figcaption></figure>
+      <figure><img src="img/app-policy.jpg" alt="Policy screen" loading="lazy"><figcaption>My policy and coverage</figcaption></figure>
+      <figure><img src="img/app-chat.jpg" alt="AI chat" loading="lazy"><figcaption>AI chat on the program</figcaption></figure>
+    </div>
+    <div class="stack"><span>Flutter</span><span>Node.js</span><span>Supabase</span><span>Claude and other models</span><span>Telegram sign-in</span></div>
+  </section>
+  <div class="shell next"><h3>Want an assistant like this for your clients?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Message on Telegram →</a></div>
+</main>
+
+<!-- ============ ТЕНДЕРЫ ============ -->
+<main class="view" id="v-tender" hidden>
+  <section class="dhero"><div class="shell">
+    <div>
+      <span class="tag">Health insurance · tenders</span>
+      <h1>Health insurance tender: <em class="s">all offers in one table</em></h1>
+      <p class="lead">An internal broker tool. A client company chooses insurance for its employees, 10–15 insurers send offers, and the system merges them for a fair comparison.</p>
+      <div class="meta"><span>Status: <b>working, the first full run on a real tender is under way</b></span><span>Users: <b>Companion's brokers</b></span></div>
+    </div>
+    <div class="dmedia"><video src="video/tender-dms-wide.mp4" poster="img/tender-poster.jpg" controls muted playsinline preload="none"></video></div>
+  </div></section>
+
+  <section class="dsec shell">
+    <span class="eyebrow">What was optimized</span>
+    <h2 class="h2" style="margin-top:16px">Manually comparing dozens of Excel files</h2>
+    <div class="ba">
+      <div class="was"><h3>Before</h3><ul><li>Each insurer sends its own Excel offer with its own structure and wording.</li><li>An expert copies the terms into a shared table by hand and looks for what is covered where.</li><li>It is easy to miss a limit or an exclusion hidden in a note.</li></ul></div>
+      <div class="now"><h3>After</h3><ul><li>Files are uploaded as they are, with no fitting to a template.</li><li>Terms are sorted into a single list: covered, covered with a limit, not covered, unclear.</li><li>Every value links to a sheet and a cell of the source file and can be checked in one click.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="dsec shell">
+    <span class="eyebrow">How it works</span>
+    <h2 class="h2" style="margin-top:16px">The broker's path, step by step</h2>
+    <ol class="flow">
+      <li><b>Client request</b><p>We upload the client's requirements and build a matrix of terms.</p></li>
+      <li><b>Choosing insurers</b><p>We mark the participants from the directory of insurance companies.</p></li>
+      <li><b>Uploading offers</b><p>We drag each insurer's file onto it.</p></li>
+      <li><b>Comparison</b><p>The AI matches the insurers' wording against the client's terms.</p></li>
+      <li><b>Expert decision</b><p>Where the system is unsure, the broker answers right in the table.</p></li>
+      <li><b>Clinics and service</b><p>Clinic coverage by city and a 45-question assistance questionnaire.</p></li>
+    </ol>
+    <div class="note"><b>Main rule</b>The AI can extract and sort data, but only a person marks it as verified. An empty cell does not turn into zero, and an uncertain match is flagged as uncertain.</div>
+  </section>
+
+  <section class="dsec shell">
+    <span class="eyebrow">For the client</span>
+    <div class="grid2">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h2 class="h2">The client gets a clear recommendation</h2>
+        <p>In the end the broker shows who has better coverage, exclusions, clinics, service and price, and gives a recommendation with arguments. The decision stays with the client.</p>
+        <p>The insurer's service questionnaire is compared as it is: if one company writes “83%” and another writes “we don't count” (in Ukrainian), that is visible without any “smoothing over”.</p>
+      </div>
+      <figure class="gallery" style="grid-template-columns:1fr;margin:0"><img src="img/tender.jpg" alt="Insurers' offers" loading="lazy"></figure>
+    </div>
+    <div class="stack"><span>Next.js</span><span>Node.js</span><span>Supabase</span><span>Excel parsing</span><span>Two AI agents: developer and checker</span></div>
+  </section>
+  <div class="shell next"><h3>Do your employees also merge tables by hand?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Discuss →</a></div>
+</main>
+
+<!-- ============ ДОГОВОРЫ ============ -->
+<main class="view" id="v-contracts" hidden>
+  <section class="dhero"><div class="shell">
+    <div>
+      <span class="tag">Health insurance · legal review</span>
+      <h1>Contract review: <em class="s">AI finds where the insurer departed from the terms</em></h1>
+      <p class="lead">After the tender the insurer sends a contract. The broker has to make sure it contains all the edits the broker usually insists on. Now the system does this.</p>
+      <div class="meta"><span>Status: <b>working inside the tender tool</b></span><span>Formats: <b>Word, Excel</b></span></div>
+    </div>
+    <div class="dmedia"><img src="img/contracts.jpg" alt="Contract on a desk"></div>
+  </div></section>
+  <section class="dsec shell">
+    <span class="eyebrow">What was optimized</span>
+    <div class="ba">
+      <div class="was"><h3>Before</h3><ul><li>A lawyer or a broker reads the whole contract, relying on memory and past emails.</li><li>The contract arrives in parts, in several files.</li><li>The letter to the insurer with the edits is written by hand.</li></ul></div>
+      <div class="now"><h3>After</h3><ul><li>The system compares the contract with the broker's registry of standard edits.</li><li>Several files are checked as one contract.</li><li>Ready-made paragraph wording and a letter to the insurer with the edits.</li></ul></div>
+    </div>
+  </section>
+  <section class="dsec shell">
+    <span class="eyebrow">How it works</span>
+    <ol class="flow">
+      <li><b>Upload</b><p>Up to 8 contract files, in the order of the parts.</p></li>
+      <li><b>Finding departures</b><p>Each finding points to its paragraph and an example from past contracts.</p></li>
+      <li><b>New wording</b><p>The AI rewrites the paragraph the way the broker usually demands.</p></li>
+      <li><b>Letter and file</b><p>A letter to the insurer and a Word file with the edits in track-changes mode.</p></li>
+      <li><b>Learning</b><p>Accepted edits are saved and taken into account in later reviews.</p></li>
+    </ol>
+  </section>
+  <div class="shell next"><h3>Do you review many similar contracts?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Discuss →</a></div>
+</main>
+
+<!-- ============ УЧЁТ ============ -->
+<main class="view" id="v-uchet" hidden>
+  <section class="dhero"><div class="shell">
+    <div>
+      <span class="tag">Health insurance · back office</span>
+      <h1>Broker accounting: <em class="s">from 1C to the browser</em></h1>
+      <p class="lead">A web system for tracking contracts, payments, insurer reports and managers' commission. It reproduces the workflow of 1C “SB Companion” but works from anywhere and does a lot on its own.</p>
+      <div class="meta"><span>Status: <b>in use by the team</b></span><span>Roles: <b>head, curator, manager</b></span></div>
+    </div>
+    <div class="dmedia"><img src="img/uchet-contract.jpg" alt="Contract card"></div>
+  </div></section>
+  <section class="dsec shell">
+    <span class="eyebrow">What was optimized</span>
+    <div class="ba">
+      <div class="was"><h3>Before</h3><ul><li>1C opened only through a remote desktop.</li><li>One person calculated the commission by manager.</li><li>Insurer reports and payments were reconciled by hand.</li></ul></div>
+      <div class="now"><h3>After</h3><ul><li>Work happens in the browser; everyone has their own login and permissions.</li><li>Commission is split between the curator, the manager and the bureau automatically, and the manager sees their own income.</li><li>The system reconciles reports and bank receipts with contracts.</li></ul></div>
+    </div>
+  </section>
+  <section class="dsec shell">
+    <span class="eyebrow">How it works</span>
+    <ol class="flow">
+      <li><b>Contract</b><p>Policyholder, insurer, amounts, rate, commission and participants' shares, checked to total 100%.</p></li>
+      <li><b>Payment schedule</b><p>The system reminds about overdue payments and contracts due for renewal.</p></li>
+      <li><b>Insurer report</b><p>You upload the report as PDF, Excel or CSV and the system finds the contracts by number.</p></li>
+      <li><b>Bank</b><p>You paste the bank statement and the system finds the receipts and matches them to the right report.</p></li>
+      <li><b>Profit calculation</b><p>Commission for the period is distributed among managers with a breakdown by contract.</p></li>
+    </ol>
+    <div class="note"><b>How it was moved from 1C</b>The configuration was available only on screen, with no export. The logic was reconstructed from the forms and checked on a real contract: premium UAH 440.80, commission 110.20, curator 73.28, manager 31.41. It matched 1C to the kopeck.</div>
+  </section>
+  <section class="dsec shell">
+    <span class="eyebrow">Screens</span>
+    <div class="gallery">
+      <figure><img src="img/uchet-reconcile.jpg" alt="Report reconciliation" loading="lazy"><figcaption>Reconciling insurer reports with contracts</figcaption></figure>
+      <figure><img src="img/uchet-bank.jpg" alt="Bank receipts" loading="lazy"><figcaption>Finding payments in the bank statement</figcaption></figure>
+      <figure><img src="img/uchet-contract.jpg" alt="New contract" loading="lazy"><figcaption>Contract card with the split of shares</figcaption></figure>
+      <figure><img src="img/uchet-login.jpg" alt="Sign-in" loading="lazy"><figcaption>Staff sign-in</figcaption></figure>
+    </div>
+    <p style="margin-top:14px;color:var(--muted);font-size:.9rem">Screenshots were taken on an empty demo database, with no client data.</p>
+    <div class="stack"><span>React</span><span>Node.js</span><span>Docker</span><span>Telegram notifications</span></div>
+  </section>
+  <div class="shell next"><h3>Tired of old 1C?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Discuss →</a></div>
+</main>
+
+<!-- ============ ВИЛЛЫ ============ -->
+<main class="view" id="v-villa" hidden>
+  <section class="dhero"><div class="shell">
+    <div>
+      <span class="tag">Villa rentals · Koh Phangan</span>
+      <h1>An AI manager for <em class="s">two villas on Airbnb</em></h1>
+      <p class="lead">One agent looks after guests, the cleaner and the pool technician. It runs in the cloud around the clock and writes to the owner only when a decision is needed.</p>
+      <div class="meta"><span>Status: <b>runs on its own, 2 villas</b></span><span>Languages: <b>Russian, English, Thai</b></span></div>
+    </div>
+    <div class="chat" role="img" aria-label="Example of the agent's conversation">
+      <span class="who">LINE · cleaner</span>
+      <div class="msg agent">Hi! Guests check out Sunday at 11. Can you clean the villa at 12?</div>
+      <div class="msg them">ok ka, 12 is fine 👍</div>
+      <div class="msg agent">Thank you! I'll remind you on Saturday evening.</div>
+      <span class="who" style="margin-top:8px">Telegram · owner</span>
+      <div class="msg owner">Cleaning on Sunday at 12:00 is confirmed. I moved the pool to Monday so it doesn't disturb the guests.</div>
+      <span class="cap">Example conversation</span>
+    </div>
+  </div></section>
+  <section class="dsec shell">
+    <span class="eyebrow">What was optimized</span>
+    <div class="ba">
+      <div class="was"><h3>Before</h3><ul><li>The owner answered guests on Airbnb personally.</li><li>Arranged every cleaning with the cleaner personally and checked it was done.</li><li>Scheduled the pool technician personally so that he would not disturb the guests.</li></ul></div>
+      <div class="now"><h3>After</h3><ul><li>The agent drafts replies to guests; the owner just taps “OK”.</li><li>Cleanings are arranged, reminded and checked without the owner.</li><li>The owner learns at once, at any time, about a missed cleaning, a breakdown or a refusal.</li></ul></div>
+    </div>
+  </section>
+  <section class="dsec shell">
+    <span class="eyebrow">How it works</span>
+    <ol class="flow">
+      <li><b>Booking</b><p>The agent sees the calendar and guest messages for both villas.</p></li>
+      <li><b>Guests</b><p>Instructions the day before arrival, a selection of places on the second day, answers to questions. Sent after the owner's OK.</p></li>
+      <li><b>Cleaning</b><p>A couple of days ahead it proposes a time to the cleaner, reminds the day before, and on the day waits for “done”.</p></li>
+      <li><b>Pool</b><p>Once a week, at a convenient time and with the guests as the priority. It forwards the pool technician's photo to the owner.</p></li>
+      <li><b>Owner</b><p>Reports and anything that needs a decision go to Telegram.</p></li>
+    </ol>
+    <div class="note"><b>Safeguards in code, not in the prompt</b>Quiet hours, the daily message limit and the ban on repeats are checked by the program before sending. A model can change its mind; a check in code cannot. The agent has been tested on refusals, reschedulings, counter-questions and false reports of “already cleaned”.</div>
+  </section>
+  <section class="dsec shell">
+    <span class="eyebrow">For guests</span>
+    <h2 class="h2" style="margin-top:16px">Online villa books</h2>
+    <p style="margin-top:12px;max-width:40em;color:var(--muted)">Each villa has its own page for guests: how the house works, how to get there, beaches, where to eat and what to do if something breaks. It opens via a QR code in the house.</p>
+    <div class="gallery phones3" style="max-width:640px;grid-template-columns:1fr 1fr">
+      <figure><img src="img/villa-cliffside.jpg" alt="Cliffside villa book" loading="lazy"><figcaption>Cliffside</figcaption></figure>
+      <figure><img src="img/villa-serenity.jpg" alt="Serenity Lake villa book" loading="lazy"><figcaption>Serenity Lake</figcaption></figure>
+    </div>
+    <div class="urls"><a href="https://phanganhomecare.com" target="_blank" rel="noopener">phanganhomecare.com</a></div>
+    <div class="stack"><span>Python</span><span>Claude</span><span>LINE</span><span>Telegram</span><span>Hospitable</span><span>Supabase</span><span>GitHub Actions</span></div>
+  </section>
+  <div class="shell next"><h3>Do you rent out property and are tired of the messaging?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Discuss →</a></div>
+</main>
+
+<!-- ============ САЙТ ============ -->
+<main class="view" id="v-site" hidden>
+  <section class="dhero"><div class="shell">
+    <div>
+      <span class="tag">Health insurance · B2B sales</span>
+      <h1>A broker's website <em class="s">that shows where clients come from</em></h1>
+      <p class="lead">A new B2B website for the insurance broker Companion, replacing a site built on a website builder. Every inquiry arrives in Telegram together with its ad source.</p>
+      <div class="meta"><span>Status: <b>working</b></span><span>Language: <b>Ukrainian</b></span></div>
+      <div class="urls"><a href="https://icompanion.com.ua" target="_blank" rel="noopener">icompanion.com.ua</a></div>
+    </div>
+    <div class="dmedia"><img src="img/site-home.jpg" alt="Website home page"></div>
+  </div></section>
+  <section class="dsec shell">
+    <span class="eyebrow">What was optimized</span>
+    <div class="ba">
+      <div class="was"><h3>Before</h3><ul><li>A website-builder site, inquiries without a source.</li><li>No way to tell which advertising pays off.</li><li>Presentations for clients were assembled by hand.</li></ul></div>
+      <div class="now"><h3>After</h3><ul><li>Forms by line of business, the inquiry goes to Telegram instantly.</li><li>Each inquiry shows the campaign, source and keyword.</li><li>Personal presentation pages with video for a specific client.</li></ul></div>
+    </div>
+  </section>
+  <section class="dsec shell">
+    <span class="eyebrow">Pages</span>
+    <div class="gallery">
+      <figure><img src="img/site-dms.jpg" alt="Corporate health insurance page" loading="lazy"><figcaption>Corporate health insurance: the “review of your program” form</figcaption></figure>
+      <figure><img src="img/site-bizzabo.jpg" alt="Personal presentation" loading="lazy"><figcaption>A personal presentation page for a client</figcaption></figure>
+    </div>
+    <div class="feat">
+      <div><b>AI video clips</b><p>Explanations of the tender and the app in short clips with AI voice-over, without a studio.</p></div>
+      <div><b>Calculator and checklist</b><p>Health insurance cost and a program-review checklist for HR.</p></div>
+      <div><b>Fast site</b><p>The home page is pre-rendered and opens even without JavaScript.</p></div>
+    </div>
+  </section>
+  <div class="shell next"><h3>Need a website that sells?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Discuss →</a></div>
+</main>
+
+<!-- ============ МЕЛКИЕ ============ -->
+<main class="view" id="v-more" hidden>
+  <section class="dhero"><div class="shell">
+    <div>
+      <span class="tag">Small projects</span>
+      <h1>AI helps <em class="s">with small things too</em></h1>
+      <p class="lead">Not everything has to be a big system. Sometimes a small tool that saves half an hour every day is enough.</p>
+    </div>
+    <div class="dmedia"><img src="img/pets.jpg" alt="The Maths Pets game"></div>
+  </div></section>
+  <section class="dsec shell">
+    <div class="grid2">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span class="eyebrow">Maths Pets</span>
+        <h2 class="h2">A game that makes the child ask to practise</h2>
+        <p><b>The task.</b> The founder's daughter, in year 3 of a British school, finds it hard to add two-digit numbers with carrying, and also has to learn the multiplication table.</p>
+        <p><b>How it works.</b> A game in the tablet's browser, in English. Solved problems grow a collection of animals and their little house. After a mistake the problem is worked through by tens. Dad gets a short report once a day: how long she practised and which mistake is getting in the way.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span class="eyebrow">Improv House</span>
+        <h2 class="h2">A website for an hourly-rental hall</h2>
+        <p>A page for a hall on Koh Phangan with booking through WhatsApp. The next step in progress: agents that manage bookings themselves.</p>
+        <span class="eyebrow" style="margin-top:20px">LayoutFix</span>
+        <h2 class="h2">Keyboard layout fix on Mac</h2>
+        <p>Typed “ghbdsn” instead of “привіт” (Ukrainian for “hello”)? The utility converts the text to the right layout by itself.</p>
+      </div>
+    </div>
+  </section>
+  <div class="shell next"><h3>Is there a routine that annoys you every day?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Tell us →</a></div>
+</main>
+
+<!-- общий финал -->
+<section class="lcta"><div class="shell">
+  <h2>Tell us what eats your team's time. In 30 minutes, for free, we'll show you what to hand to AI.</h2>
+  <div class="side">
+    <a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Book a review →</a>
+    <small>Telegram: @EgorMuratov</small>
+  </div>
+</div></section>
+
+<template id="topbar-tpl">
+  <div class="topbar"><div class="shell"><button class="back" type="button" data-go="home">All projects</button><span class="who">StopRoutine · AI implementation</span><span class="lang" aria-label="Language"><a href="/" hreflang="uk" lang="uk">UA</a><span aria-hidden="true">·</span><a href="/en/" hreflang="en" lang="en" class="on" aria-current="page">EN</a></span></div></div>
+</template>
+
+<script>
+(function(){
+  var VIEWS=['home','app','tender','contracts','uchet','villa','site','more'];
+  var tpl=document.getElementById('topbar-tpl');
+  VIEWS.slice(1).forEach(function(v){
+    var el=document.getElementById('v-'+v);
+    el.insertBefore(tpl.content.cloneNode(true),el.firstChild);
+  });
+  var lastHomeScroll=0;
+  function show(v,scrollTarget){
+    if(VIEWS.indexOf(v)<0) v='home';
+    var cur=VIEWS.find(function(x){return !document.getElementById('v-'+x).hidden});
+    if(cur==='home') lastHomeScroll=window.scrollY;
+    VIEWS.forEach(function(x){document.getElementById('v-'+x).hidden=(x!==v)});
+    if(v==='home'){
+      if(scrollTarget){var t=document.getElementById(scrollTarget);if(t){ if(t.id==='projects') window.scrollTo(0,t.getBoundingClientRect().top+window.scrollY+window.innerHeight); /* сетка проектов полностью развёрнута */ else t.scrollIntoView({block:'center'}); }}
+      else window.scrollTo(0,lastHomeScroll);
+    } else window.scrollTo(0,0);
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-go],[data-scroll]');
+    if(!a) return;
+    e.preventDefault();
+    if(a.dataset.go){
+      if(a.dataset.go==='home') show('home','projects'); else show(a.dataset.go);
+      try{history.replaceState(null,'','/en/#'+(a.dataset.go==='home'?'projects':a.dataset.go));}catch(_){}
+    } else {
+      var t=document.getElementById(a.dataset.scroll); if(t) t.scrollIntoView({behavior:'smooth'});
+    }
+  });
+  var h=(location.hash||'').slice(1);
+  if(h && h!=='projects') show(h); else if(h==='projects') show('home','projects');
+})();
+</script>
+<script>
+/* Один фильм на всю главную: четыре сцены склеены в одну ленту кадров.
+   Метки .mk говорят, какой кадр должен стоять, когда метка проходит середину экрана; между ними кадр плавно меняется. */
+(function(){
+  var home=document.getElementById('v-home'), cv=document.getElementById('reel');
+  if(!home||!cv) return;
+  var ctx=cv.getContext('2d'), K=10;
+  var small=window.matchMedia('(max-width:700px)').matches;
+  /* mx: с какой доли ширины кадра начинать на узком экране (сцена справа) */
+  var SC=[{d:'a',n:150,mx:.4},{d:'b',n:100,mx:.4},{d:'c',n:120,mx:.4},{d:'d',n:120,mx:.25},{d:'e',n:60,mx:.25}];
+  var T=0; SC.forEach(function(s){s.o=T;T+=s.n;s.m=Math.ceil(s.n/K);s.img=new Array(s.m)});
+  var pick=document.getElementById('projects'), hint=document.getElementById('reel-hint'), fin=document.getElementById('finale');
+  /* где в кадре стоят шесть зелёных карточек (доли кадра) — отсюда вырастают настоящие */
+  var GREEN=[[.536,.214,.633,.387],[.646,.206,.75,.386],[.764,.183,.878,.378],[.536,.413,.633,.578],[.646,.411,.75,.587],[.764,.406,.878,.591]];
+  var cards=[].slice.call(pick.querySelectorAll('.lh-grid .lh-card'));
+  function morph(u){
+    /* где на экране кадр сцены с карточками: считаем по размеру экрана, не дожидаясь отрисовки видео */
+    var cw=cv.clientWidth, ch=cv.clientHeight, t=place(cw,ch,1600,900,SC[1].mx), shown={x:t.x,y:t.y,w:1600*t.r,h:900*t.r};
+    var e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2; /* плавно в начале и в конце */
+    cards.forEach(function(el,i){
+      var b=GREEN[i]; if(!b||u<=0){el.style.opacity=0;return}
+      el.style.transform='none';
+      var f=el.getBoundingClientRect();
+      var sx=shown.x+b[0]*shown.w, sy=shown.y+b[1]*shown.h, sw=(b[2]-b[0])*shown.w, sh=(b[3]-b[1])*shown.h;
+      var k=1-e;
+      el.style.transform='translate('+(sx-f.left)*k+'px,'+(sy-f.top)*k+'px) scale('+(sw/f.width*k+e)+','+(sh/f.height*k+e)+')';
+      el.style.opacity=Math.min(1,u*6);
+      el.style.borderColor='rgba(197,241,107,'+(.9*k+.12*e)+')';
+      el.style.boxShadow='0 0 '+(28*k)+'px rgba(197,241,107,'+(.6*k)+')';
+      var body=el.querySelector('.lh-body'), img=el.querySelector('img');
+      if(body) body.style.opacity=Math.max(0,(u-.55)/.45);
+      if(img) img.style.opacity=Math.min(1,u*1.8);
+    });
+  }
+  var nav=[].slice.call(home.querySelectorAll('.reel-nav span')), NAV=[0,48,95,150,250,370];
+  var bar=document.getElementById('reel-bar'), load=document.getElementById('reel-load');
+  var marks=[].slice.call(home.querySelectorAll('.mk')).map(function(m){return {el:m,f:+m.dataset.f}});
+  var want=0,cur=-1,last=-1,pend=false,loaded=0,total=0;
+  function scene(g){for(var i=SC.length-1;i>=0;i--) if(g>=SC[i].o) return SC[i]; return SC[0]}
+  function ok(g){var s=scene(g),im=s.img[Math.floor((g-s.o)/K)];return im&&im.complete&&im.naturalWidth}
+  function nearest(g){for(var k=0;k<T;k++){if(g-k>=0&&ok(g-k))return g-k;if(g+k<T&&ok(g+k))return g+k}return -1}
+  function place(W,H,iw,ih,mx){
+    if(W/H<.8){var r=W/((1-mx)*iw);return {r:r,x:-mx*iw*r,y:H*.06}}
+    var r2=Math.max(W/iw,H/ih);return {r:r2,x:(W-iw*r2)/2,y:(H-ih*r2)/2};
+  }
+  function draw(){
+    if(home.hidden) return;
+    var g=nearest(want); if(g<0) return;
+    if(want===cur&&g===last) return; cur=want; last=g;
+    var s=scene(g), l=g-s.o, im=s.img[Math.floor(l/K)], iw=im.naturalWidth, ih=im.naturalHeight/K;
+    var W=cv.width,H=cv.height,t=place(W,H,iw,ih,s.mx);
+    ctx.fillStyle='#05080d';ctx.fillRect(0,0,W,H);
+    ctx.drawImage(im,0,(l%K)*ih,iw,ih,t.x,t.y,iw*t.r,ih*t.r);
+  }
+  function frameNow(){
+    var c=window.scrollY+window.innerHeight/2, ys=marks.map(function(m){return m.el.getBoundingClientRect().top+window.scrollY});
+    if(c<=ys[0]) return marks[0].f;
+    for(var i=1;i<marks.length;i++){ if(c<=ys[i]){var a=ys[i-1],b=ys[i];return marks[i-1].f+(marks[i].f-marks[i-1].f)*(b>a?(c-a)/(b-a):1)} }
+    return marks[marks.length-1].f;
+  }
+  function onScroll(){
+    if(home.hidden) return;
+    want=Math.max(0,Math.min(T-1,Math.round(frameNow())));
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?window.scrollY/h*100:0)+'%';
+    /* панель проектов разворачивается, пока её верх едет от низа экрана до верха */
+    /* превращение идёт, пока панель стоит на месте: от момента, когда она дошла до верха экрана */
+    var pr=pick.getBoundingClientRect(), u=Math.max(0,Math.min(1,-pr.top/(window.innerHeight*.9)));
+    if(pr.top>window.innerHeight) u=0; pick.style.setProperty('--u',u.toFixed(3)); morph(u);
+    hint.style.opacity=window.scrollY>40?0:1;
+    fin.style.setProperty('--fin',Math.max(0,Math.min(1,(want-466)/(T-1-466))).toFixed(3)); /* финал проявляется вместе с последними кадрами */
+    var c=0; NAV.forEach(function(v,i){if(want>=v)c=i}); nav.forEach(function(el,i){el.classList.toggle('on',i===c)});
+    if(!pend){pend=true;requestAnimationFrame(function(){pend=false;draw()})}
+  }
+  function size(){var d=Math.min(window.devicePixelRatio||1,2);cv.width=cv.clientWidth*d;cv.height=cv.clientHeight*d;cur=-1;onScroll()}
+  /* грузим листы по порядку сцен: сначала первая, остальные следом */
+  SC.forEach(function(s){
+    for(var i=0;i<s.m;i++){(function(s,i){total++;var im=new Image();im.decoding='async';
+      im.onload=function(){loaded++;load.textContent=loaded<total?Math.round(loaded/total*100)+'%':'';cur=-1;if(!pend){pend=true;requestAnimationFrame(function(){pend=false;draw()})}};
+      im.src='s/'+s.d+(small?'-m/':'/')+'s'+String(i+1).padStart(3,'0')+'.webp';s.img[i]=im})(s,i)}
+  });
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',size);
+  /* при возврате со страницы проекта главная снова видна: перерисовать */
+  new MutationObserver(function(){if(!home.hidden){cur=-1;size()}}).observe(home,{attributes:true,attributeFilter:['hidden']});
+  size();
+})();
+</script>
+
+<script>
+/* Аналитика: включается, только когда в <meta name="ga-id"> вписан ID. Считаем посещения и нажатия на кнопки связи. */
+(function(){
+  var m=document.querySelector('meta[name="ga-id"]'), id=m&&m.content.trim();
+  if(!id) return;
+  var t=document.createElement('script'); t.async=true; t.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id); document.head.appendChild(t);
+  window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments)} window.gtag=gtag;
+  gtag('js',new Date()); gtag('config',id);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href*="t.me/"],a[href^="mailto:"],a[href^="tel:"]'); if(!a) return;
+    gtag('event','generate_lead',{method:a.href.split(':')[0]==='https'?'telegram':a.href.split(':')[0], link_text:(a.textContent||'').trim().slice(0,60)});
+  });
+})();
+</script>
+</body></html>

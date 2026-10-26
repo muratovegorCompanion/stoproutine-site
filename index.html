@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="ru">
+<html lang="uk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta property="og:title" content="Егор Муратов, ИИ-внедрение">
-<meta property="og:description" content="Убираю рутину из бизнеса с помощью ИИ. Начал со своего.">
+<meta property="og:title" content="StopRoutine — агенція з впровадження ШІ">
+<meta property="og:description" content="Прибираємо рутину з бізнесу за допомогою ШІ. Почали зі свого.">
 <meta property="og:image" content="https://stoproutine.com/s/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://stoproutine.com/">
+<meta property="og:locale" content="uk_UA">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Google Analytics 4: вставьте сюда ID вида G-XXXXXXX, пока пусто — ничего не грузится и ничего не считается -->
@@ -16,8 +17,11 @@
 <style>body{margin:0}[hidden]:not([hidden=until-found i]){display:none!important}img{max-width:100%}</style>
 <link rel="preload" as="image" href="s/poster.webp" media="(min-width:701px)">
 <link rel="preload" as="image" href="s/poster-m.webp" media="(max-width:700px)">
-<title>Егор Муратов, ИИ-внедрение</title>
-<meta name="description" content="Убираю рутину из бизнеса с помощью ИИ. Начал со своего.">
+<title>StopRoutine — агенція з впровадження ШІ</title>
+<meta name="description" content="Прибираємо рутину з бізнесу за допомогою ШІ. Почали зі свого.">
+<link rel="alternate" hreflang="uk" href="https://stoproutine.com/">
+<link rel="alternate" hreflang="en" href="https://stoproutine.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://stoproutine.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap">
 <style>
@@ -266,7 +270,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lh-tasks b{color:#fff;font-weight:600}
 .lh-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;margin:0;padding:0;counter-reset:k}
 .lh-steps li{counter-increment:k;border-top:3px solid var(--lime);padding-top:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.lh-steps li::before{content:"Шаг " counter(k);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.lh-steps li::before{content:"Крок " counter(k);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
 .lh-steps b{font-size:1.15rem}
 .lh-steps p{color:var(--muted);font-size:.95rem}
 .lh-steps .get{color:var(--ink);font-weight:600;font-size:.93rem}
@@ -347,6 +351,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .reel-ruler i{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--lime);box-shadow:0 0 12px var(--lime)}
 .reel-ruler em{position:absolute;right:0;bottom:12px;font-style:normal;font-size:.68rem;letter-spacing:.14em;color:rgba(255,255,255,.45)}
 @media (max-width:1100px){.reel-nav{display:none}}
+/* Language switch */
+.lang{display:flex;gap:.5em;flex:none;white-space:nowrap;pointer-events:auto}
+.lang a{color:inherit;text-decoration:none}
+.lang a.on{color:var(--lime)}
+.reel-top > span:first-child{min-width:0}
+.topbar .lang{font-size:.85rem;color:var(--muted-dark)}
+.topbar .who{margin-left:auto;min-width:0;text-align:right}
 @media (max-width:900px){
   .reel-shade{background:linear-gradient(0deg,rgba(5,8,13,.92) 0%,rgba(5,8,13,.6) 42%,rgba(5,8,13,0) 62%)}
   .reel-flow .shell{margin-left:16px;margin-right:16px;max-width:none}
@@ -370,117 +381,117 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <!-- ============ ГЛАВНАЯ ============ -->
 <main class="view" id="v-home">
   <div class="reel" aria-hidden="true"><canvas id="reel"></canvas><div class="reel-shade"></div></div>
-  <div class="reel-top"><span><b>Егор Муратов</b> · ИИ-внедрение</span><span class="reel-nav"><span>01 Хаос</span><span>02 Разбор</span><span>03 Порядок</span><span>04 Проекты</span><span>05 Система</span><span>06 Ваш ход</span></span></div>
+  <div class="reel-top"><span><b>StopRoutine</b> · ШІ-впровадження</span><span class="reel-nav"><span>01 Хаос</span><span>02 Розбір</span><span>03 Лад</span><span>04 Проєкти</span><span>05 Система</span><span>06 Ваш хід</span></span><span class="lang" aria-label="Мова"><a href="/" hreflang="uk" lang="uk" class="on" aria-current="page">UA</a><span aria-hidden="true">·</span><a href="/en/" hreflang="en" lang="en">EN</a></span></div>
   <div class="reel-ruler"><i id="reel-bar"></i><em id="reel-load"></em></div>
   <div class="reel-flow" id="flow">
-  <section class="cap cap-open"><i class="mk" data-f="0"></i><div class="shell"><small>01 / Хаос</small><h2>Excel,<br>договоры,<br><i>переписка</i></h2><p>10–15 файлов от разных партнёров, у каждого своя структура. Сотрудник сводит их руками и боится пропустить строчку в примечании.</p><a class="btn btn-lime open-cta" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Бесплатный разбор 30 минут →</a></div><div class="hint" id="reel-hint">Листайте ↓</div></section>
+  <section class="cap cap-open"><i class="mk" data-f="0"></i><div class="shell"><small>01 / Хаос</small><h2>Excel,<br>договори,<br><i>листування</i></h2><p>10–15 файлів від різних партнерів, у кожного своя структура. Співробітник зводить їх вручну й боїться пропустити рядок у примітці.</p><a class="btn btn-lime open-cta" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Безкоштовний розбір на 30 хвилин →</a></div><div class="hint" id="reel-hint">Гортайте ↓</div></section>
   <i class="mk" data-f="48"></i>
-  <section class="cap"><div class="shell"><small>02 / Разбор</small><h2>ИИ<br>раскладывает<br><i>по полочкам</i></h2><p>Каждое условие на своё место: покрыто, с ограничением, не покрыто, неясно. Где система не уверена, она так и говорит.</p></div></section>
+  <section class="cap"><div class="shell"><small>02 / Розбір</small><h2>ШІ<br>розкладає<br><i>по поличках</i></h2><p>Кожна умова на своє місце: покрито, з обмеженням, не покрито, неясно. Де система не впевнена, вона так і каже.</p></div></section>
   <i class="mk" data-f="95"></i>
-  <section class="cap"><div class="shell"><small>03 / Порядок</small><h2>Одна<br>таблица</h2><p>Каждая цифра ведёт к листу и ячейке исходного файла. Проверить можно в один клик.</p></div></section>
+  <section class="cap"><div class="shell"><small>03 / Лад</small><h2>Одна<br>таблиця</h2><p>Кожна цифра веде до аркуша й комірки вихідного файлу. Перевірити можна одним кліком.</p></div></section>
   <i class="mk" data-f="140"></i>
 <section class="lh-hero"><div class="shell pan wide">
-    <img src="img/egor.jpg" alt="Егор Муратов">
+    <img src="img/egor.jpg" alt="Єгор Муратов">
     <div>
-      <h1>Убираю рутину из бизнеса с&nbsp;помощью ИИ. <em class="s">Начал со своего.</em></h1>
-      <p>Я Егор Муратов, владелец страхового брокера «Компаньон». Вот что уже работает в моих компаниях.</p>
-      <div class="lh-niche"><span>Для кого:</span><span>страхование и финансы</span><span>недвижимость и аренда</span><span>бизнес, который живёт в Excel и 1С</span></div>
+      <h1>Прибираємо рутину з бізнесу за&nbsp;допомогою ШІ. <em class="s">Почали зі свого.</em></h1>
+      <p>StopRoutine — агенція з впровадження ШІ. Засновник і директор — Єгор Муратов, власник страхового брокера «Компаньйон». Ось що вже працює в його компаніях.</p>
+      <div class="lh-niche"><span>Для кого:</span><span>страхування й фінанси</span><span>нерухомість і оренда</span><span>бізнес, що живе в Excel і 1С</span></div>
       <div class="acts">
-        <a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Бесплатный разбор 30 минут →</a>
-        <a class="btn btn-ghost" href="#projects" data-go="home">Смотреть проекты</a>
+        <a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Безкоштовний розбір на 30 хвилин →</a>
+        <a class="btn btn-ghost" href="#projects" data-go="home">Дивитися проєкти</a>
       </div>
     </div>
   </div></section>
   <i class="mk" data-f="149"></i>
 <section class="lh-sec shell pan wide">
-    <span class="lh-label">Что вы получите</span>
-    <h2>Сотрудники занимаются клиентами, а рутину делает ИИ</h2>
+    <span class="lh-label">Що ви отримаєте</span>
+    <h2>Співробітники займаються клієнтами, а рутину робить ШІ</h2>
     <div class="lh-gets">
-      <div><i>⏱</i><b>Меньше ручной работы</b><p>Сводки, сверки и перепечатка из файла в файл делаются сами.</p></div>
-      <div><i>💬</i><b>Ответы клиентам 24/7</b><p>Помощник отвечает на типовые вопросы ночью и в выходные, по вашим документам.</p></div>
-      <div><i>✓</i><b>Цифры без ошибок</b><p>Каждое число можно проверить по источнику. Нет данных, и система так и скажет.</p></div>
-      <div><i>🔒</i><b>Всё под контролем</b><p>Клиентам ничего не уходит без вашего «ок». Вы видите, что делает ИИ.</p></div>
+      <div><i>⏱</i><b>Менше ручної роботи</b><p>Зведення, звірки та передрук із файлу у файл робляться самі.</p></div>
+      <div><i>💬</i><b>Відповіді клієнтам 24/7</b><p>Помічник відповідає на типові запитання вночі та у вихідні, за вашими документами.</p></div>
+      <div><i>✓</i><b>Цифри без помилок</b><p>Кожне число можна перевірити за джерелом. Немає даних — система так і скаже.</p></div>
+      <div><i>🔒</i><b>Усе під контролем</b><p>Клієнтам нічого не йде без вашого «ок». Ви бачите, що робить ШІ.</p></div>
     </div>
   </section>
   <i class="mk" data-f="152"></i>
-  <section class="cap"><div class="shell"><small>04 / Проекты</small><h2>Шесть<br>проектов<br><i>из моих компаний</i></h2><p>Каждый начинался с рутины, которая съедала время команды.</p></div></section>
+  <section class="cap"><div class="shell"><small>04 / Проєкти</small><h2>Шість<br>проєктів<br><i>з компаній засновника</i></h2><p>Кожен починався з рутини, що з'їдала час команди.</p></div></section>
   <i class="mk" data-f="244"></i>
   <section class="pick" id="projects"><div class="unfold">
     <div class="unfold-in">
-      <span class="lh-label">Проекты</span>
-      <div class="unfold-head"><h2>Выберите проект</h2><a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обсудить свою задачу →</a></div>
+      <span class="lh-label">Проєкти</span>
+      <div class="unfold-head"><h2>Оберіть проєкт</h2><a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обговорити свою задачу →</a></div>
     <div class="lh-grid">
-      <a class="lh-card" href="#app" data-go="app"><img src="img/app-poster.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Приложение ДМС с ИИ-чатом</h3><p>Отвечает сотруднику, покрывает ли страховка его диагноз или анализ.</p><span class="lh-more">Подробнее →</span></div></a>
-      <a class="lh-card" href="#tender" data-go="tender"><img src="img/tender-poster.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Сравнение тендеров</h3><p>Сводит Excel-предложения 10–15 страховых в одну таблицу.</p><span class="lh-more">Подробнее →</span></div></a>
-      <a class="lh-card" href="#contracts" data-go="contracts"><img src="img/contracts.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Проверка договоров</h3><p>Находит, где страховая отступила от нужных условий, и готовит правки.</p><span class="lh-more">Подробнее →</span></div></a>
-      <a class="lh-card" href="#uchet" data-go="uchet"><img src="img/uchet-contract.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Учёт вместо 1С</h3><p>Сам считает комиссию менеджерам и сверяет акты с банком.</p><span class="lh-more">Подробнее →</span></div></a>
-      <a class="lh-card" href="#villa" data-go="villa"><img src="img/villa-index.jpg" alt="" loading="lazy"><div class="lh-body"><h3>ИИ-управляющий виллами</h3><p>Сам договаривается с клинером и готовит ответы гостям Airbnb.</p><span class="lh-more">Подробнее →</span></div></a>
-      <a class="lh-card" href="#site" data-go="site"><img src="img/site-home.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Сайт с заявками</h3><p>Каждая заявка приходит в Telegram с рекламным источником.</p><span class="lh-more">Подробнее →</span></div></a>
+      <a class="lh-card" href="#app" data-go="app"><img src="img/app-poster.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Застосунок ДМС зі ШІ-чатом</h3><p>Відповідає співробітнику, чи покриває страховка його діагноз або аналіз.</p><span class="lh-more">Докладніше →</span></div></a>
+      <a class="lh-card" href="#tender" data-go="tender"><img src="img/tender-poster.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Порівняння тендерів</h3><p>Зводить Excel-пропозиції 10–15 страховиків в одну таблицю.</p><span class="lh-more">Докладніше →</span></div></a>
+      <a class="lh-card" href="#contracts" data-go="contracts"><img src="img/contracts.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Перевірка договорів</h3><p>Знаходить, де страховик відступив від потрібних умов, і готує правки.</p><span class="lh-more">Докладніше →</span></div></a>
+      <a class="lh-card" href="#uchet" data-go="uchet"><img src="img/uchet-contract.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Облік замість 1С</h3><p>Сам рахує комісію менеджерам і звіряє акти з банком.</p><span class="lh-more">Докладніше →</span></div></a>
+      <a class="lh-card" href="#villa" data-go="villa"><img src="img/villa-index.jpg" alt="" loading="lazy"><div class="lh-body"><h3>ШІ-управитель вілами</h3><p>Сам домовляється з клінером і готує відповіді гостям Airbnb.</p><span class="lh-more">Докладніше →</span></div></a>
+      <a class="lh-card" href="#site" data-go="site"><img src="img/site-home.jpg" alt="" loading="lazy"><div class="lh-body"><h3>Сайт із заявками</h3><p>Кожна заявка надходить у Telegram із рекламним джерелом.</p><span class="lh-more">Докладніше →</span></div></a>
     </div>
-    <a class="lh-card" href="#more" data-go="more"><div class="lh-body"><h3>И мелочи</h3><p>Игра по математике для дочки, сайт зала, исправление раскладки на Mac.</p><span class="lh-more">Смотреть →</span></div></a>
+    <a class="lh-card" href="#more" data-go="more"><div class="lh-body"><h3>І дрібниці</h3><p>Гра з математики для доньки засновника, сайт залу, виправлення розкладки на Mac.</p><span class="lh-more">Дивитися →</span></div></a>
     </div>
   </div></section>
   <i class="mk" data-f="249"></i>
-  <section class="cap"><div class="shell"><small>05 / Система</small><h2>Работает<br><i>само</i></h2><p>Сводки, сверки и ответы делаются без вас. Клиентам ничего не уходит без вашего «ок».</p></div></section>
+  <section class="cap"><div class="shell"><small>05 / Система</small><h2>Працює<br><i>самостійно</i></h2><p>Зведення, звірки та відповіді робляться без вас. Клієнтам нічого не йде без вашого «ок».</p></div></section>
   <i class="mk" data-f="330"></i>
 <section class="lh-auto"><div class="lh-sec shell pan">
-    <span class="lh-label">Что можно автоматизировать</span>
-    <h2>Если это повторяется каждый день, это можно отдать ИИ</h2>
+    <span class="lh-label">Що можна автоматизувати</span>
+    <h2>Якщо це повторюється щодня, це можна віддати ШІ</h2>
     <ul class="lh-tasks">
-      <li><span><b>Сравнение предложений</b> от поставщиков и партнёров в разных форматах</span></li>
-      <li><span><b>Ответы клиентам</b> по договорам, условиям и инструкциям</span></li>
-      <li><span><b>Проверка договоров</b> на отступления от ваших условий</span></li>
-      <li><span><b>Учёт и сверки</b> вместо старой 1С и Excel</span></li>
-      <li><span><b>Переписка с подрядчиками</b>: согласовать, напомнить, проверить</span></li>
-      <li><span><b>Заявки с сайта</b> сразу в Telegram с источником рекламы</span></li>
+      <li><span><b>Порівняння пропозицій</b> від постачальників і партнерів у різних форматах</span></li>
+      <li><span><b>Відповіді клієнтам</b> за договорами, умовами та інструкціями</span></li>
+      <li><span><b>Перевірка договорів</b> на відступи від ваших умов</span></li>
+      <li><span><b>Облік і звірки</b> замість старої 1С та Excel</span></li>
+      <li><span><b>Листування з підрядниками</b>: погодити, нагадати, перевірити</span></li>
+      <li><span><b>Заявки з сайту</b> одразу в Telegram із джерелом реклами</span></li>
     </ul>
-    <a class="btn btn-lime cta-inline" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Разобрать мою рутину →</a>
+    <a class="btn btn-lime cta-inline" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Розібрати мою рутину →</a>
   </div></section>
   <i class="mk" data-f="369"></i>
 <section class="lh-sec shell pan">
-    <span class="lh-label">Как начнём</span>
-    <h2>Три шага, и на каждом понятно, что вы получаете</h2>
+    <span class="lh-label">Як почнемо</span>
+    <h2>Три кроки, і на кожному зрозуміло, що ви отримуєте</h2>
     <ol class="lh-steps">
-      <li><b>Разбор</b><span class="time">30 минут бесплатно, потом 1–2 встречи</span><p> Смотрим, где команда теряет больше всего времени.</p><span class="get">Вы получаете план: что автоматизировать первым и какая будет польза.</span></li>
-      <li><b>Пилот</b><span class="time">срок и цену фиксируем до старта</span><p>Автоматизируем один процесс на ваших реальных данных.</p><span class="get">Вы получаете работающий инструмент за фиксированную цену и срок.</span></li>
-      <li><b>Развитие</b><span class="time">когда будете готовы</span><p>Слежу за работой, дорабатываю, подключаю следующие процессы.</p><span class="get">Вы получаете систему, которая растёт вместе с бизнесом.</span></li>
+      <li><b>Розбір</b><span class="time">30 хвилин безкоштовно · повний аудит відділу від 15 000 грн, зараховується у вартість пілота</span><p> Дивимося, де команда втрачає найбільше часу.</p><span class="get">Ви отримуєте план: що автоматизувати першим і яка буде користь.</span></li>
+      <li><b>Пілот</b><span class="time">від $2,500 · 3–4 тижні · ціну і строк фіксуємо до старту</span><p>Автоматизуємо один процес на ваших реальних даних.</p><span class="get">Ви отримуєте робочий інструмент за фіксованою ціною та в зафіксований строк.</span></li>
+      <li><b>Розвиток</b><span class="time">від $300 на місяць · коли будете готові</span><p>Стежимо за роботою, доопрацьовуємо, підключаємо наступні процеси.</p><span class="get">Ви отримуєте систему, що росте разом із бізнесом.</span></li>
     </ol>
-    <a class="btn btn-lime cta-inline" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Записаться на разбор →</a>
+    <a class="btn btn-lime cta-inline" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Записатися на розбір →</a>
   </section>
   <i class="mk" data-f="410"></i>
 <section class="lh-sec shell pan">
     <div class="lh-about">
       <div>
-        <span class="lh-label">Обо мне</span>
-        <h2 style="margin-top:14px">Я не агентство. Я предприниматель, который сам внедрил ИИ</h2>
-        <p>Руковожу страховым брокером «Компаньон», он 12 лет на рынке. В 2026 году перевёл его рутину на ИИ: тендеры, учёт, договоры, ответы клиентам. Поэтому говорю с вами как владелец с владельцем и предлагаю только то, что окупается.</p>
-        <p>Работаю по NDA. Доступ беру только к тем данным, которые нужны для задачи.</p>
+        <span class="lh-label">Про нас</span>
+        <h2 style="margin-top:14px">Агенція, яку очолює підприємець, що спершу автоматизував власні компанії</h2>
+        <p>Засновник і директор StopRoutine Єгор Муратов очолює страховий брокер «Компаньйон», який 12 років на ринку. У 2026 році він перевів його рутину на ШІ: тендери, облік, договори, відповіді клієнтам. Тому Єгор говорить із вами як власник із власником, а ми пропонуємо лише те, що окупається.</p>
+        <p>Працюємо за NDA. Доступ беремо лише до тих даних, які потрібні для задачі.</p>
       </div>
       <div class="lh-facts">
-        <div><b>15 000+</b><span>застрахованных у «Компаньона»</span></div>
-        <div><b>70+</b><span>компаний-клиентов</span></div>
-        <div><b>~97%</b><span>клиентов продлевают договор</span></div>
+        <div><b>15 000+</b><span>застрахованих у «Компаньйона»</span></div>
+        <div><b>70+</b><span>компаній-клієнтів «Компаньйона»</span></div>
+        <div><b>~97%</b><span>клієнтів «Компаньйона» продовжують договір</span></div>
       </div>
     </div>
   </section>
   <i class="mk" data-f="440"></i>
 <section class="lh-sec shell pan">
-    <span class="lh-label">Частые вопросы</span>
-    <h2>Что обычно спрашивают перед стартом</h2>
+    <span class="lh-label">Часті запитання</span>
+    <h2>Що зазвичай питають перед стартом</h2>
     <div class="lh-faq">
-      <details><summary>Сколько это стоит?</summary><p>Зависит от задачи. После разбора называю фиксированную цену и срок пилота, до того как начну работу. Первый разговор бесплатный.</p></details>
-      <details><summary>Что с данными моих клиентов?</summary><p>Подпишу NDA до того, как вы покажете документы. Клиентам ничего не уходит без вашего «ок», а каждое число в отчётах можно проверить по исходному файлу.</p></details>
-      <details><summary>Нужен ли мне свой программист?</summary><p>Нет. Я настраиваю и запускаю всё сам, вам нужно только объяснить, как сейчас устроен процесс.</p></details>
-      <details><summary>Что будет после запуска?</summary><p>Слежу за работой, исправляю ошибки и подключаю следующие процессы, если вы захотите.</p></details>
-      <details><summary>А если ИИ ошибётся?</summary><p>Там, где важна точность, результат проверяет человек. Если данных не хватает, система так и пишет, а не додумывает.</p></details>
+      <details><summary>Скільки це коштує?</summary><p>Перша розмова на 30 хвилин безкоштовна. Повний аудит відділу — від 15 000 грн, і ця сума зараховується у вартість пілота. Пілот одного процесу — від $2,500 за 3–4 тижні, підтримка й розвиток — від $300 на місяць. Точну ціну і строк пілота фіксуємо до старту робіт.</p></details>
+      <details><summary>Що з даними моїх клієнтів?</summary><p>Підпишемо NDA до того, як ви покажете документи. Клієнтам нічого не йде без вашого «ок», а кожне число у звітах можна перевірити за вихідним файлом.</p></details>
+      <details><summary>Чи потрібен мені свій програміст?</summary><p>Ні. Ми налаштовуємо та запускаємо все самі, вам потрібно лише пояснити, як зараз влаштований процес.</p></details>
+      <details><summary>Що буде після запуску?</summary><p>Стежимо за роботою, виправляємо помилки та підключаємо наступні процеси, якщо ви захочете.</p></details>
+      <details><summary>А якщо ШІ помилиться?</summary><p>Там, де важлива точність, результат перевіряє людина. Якщо даних не вистачає, система так і пише, а не домислює.</p></details>
     </div>
   </section>
   <i class="mk" data-f="466"></i>
   <section class="cap finale" id="finale"><i class="mk" data-f="549"></i><div class="shell">
-    <small>06 / Ваш ход</small>
-    <h2>А что съедает<br>время <i>у вас?</i></h2>
-    <p>Расскажите за 30 минут, и я бесплатно покажу, что из этого можно отдать ИИ и с чего начать.</p>
-    <div class="finale-acts"><a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Записаться на разбор →</a><span>Telegram: @EgorMuratov</span></div>
+    <small>06 / Ваш хід</small>
+    <h2>А що з'їдає<br>час <i>у вас?</i></h2>
+    <p>Розкажіть за 30 хвилин, і ми безкоштовно покажемо, що з цього можна віддати ШІ та з чого почати.</p>
+    <div class="finale-acts"><a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Записатися на розбір →</a><span>Telegram: @EgorMuratov</span></div>
   </div></section>
   </div>
 </main>
@@ -489,322 +500,322 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <main class="view" id="v-app" hidden>
   <section class="dhero"><div class="shell">
     <div>
-      <span class="tag">Медстрахование · клиентам брокера</span>
-      <h1>Приложение ДМС: <em class="s">страховой консультант в кармане</em></h1>
-      <p class="lead">Мобильное приложение для сотрудников компаний, которых страхует «Компаньон». Человек сам узнаёт, что покрывает его страховка, находит клинику и получает помощь, если ему отказали.</p>
-      <div class="meta"><span>Статус: <b>на проверке в App Store</b></span><span>Платформы: <b>iOS, Android</b></span><span>Язык: <b>украинский</b></span></div>
+      <span class="tag">Медстрахування · клієнтам брокера</span>
+      <h1>Застосунок ДМС: <em class="s">страховий консультант у кишені</em></h1>
+      <p class="lead">Мобільний застосунок для співробітників компаній, яких страхує «Компаньйон». Людина сама дізнається, що покриває її страховка, знаходить клініку й отримує допомогу, якщо їй відмовили.</p>
+      <div class="meta"><span>Статус: <b>на перевірці в App Store</b></span><span>Платформи: <b>iOS, Android</b></span><span>Мова: <b>українська</b></span></div>
     </div>
     <div class="dmedia"><video src="video/app-wide.mp4" poster="img/app-poster.jpg" controls muted playsinline preload="none"></video></div>
   </div></section>
 
   <section class="dsec shell">
-    <span class="eyebrow">Что оптимизировали</span>
-    <h2 class="h2" style="margin-top:16px">Вопросы, которые раньше шли менеджеру</h2>
+    <span class="eyebrow">Що оптимізували</span>
+    <h2 class="h2" style="margin-top:16px">Запитання, які раніше йшли менеджеру</h2>
     <div class="ba">
-      <div class="was"><h3>Было</h3><ul><li>Сотрудник клиента звонит менеджеру брокера: «покрывается ли этот анализ», «в какую клинику можно».</li><li>Полис и программа лежат PDF-ом где-то в почте у HR.</li><li>После отказа в оплате человек не понимает, прав ли страховщик.</li></ul></div>
-      <div class="now"><h3>Стало</h3><ul><li>Ответ в чате за секунды, по документам именно его программы.</li><li>Полис, покрытие, лимиты и клиники всегда в телефоне.</li><li>При отказе ИИ сверяет его с условиями программы и передаёт спорный случай брокеру.</li></ul></div>
+      <div class="was"><h3>Було</h3><ul><li>Співробітник клієнта телефонує менеджеру брокера: «чи покривається цей аналіз», «в яку клініку можна».</li><li>Поліс і програма лежать PDF-файлом десь у пошті в HR.</li><li>Після відмови в оплаті людина не розуміє, чи правий страховик.</li></ul></div>
+      <div class="now"><h3>Стало</h3><ul><li>Відповідь у чаті за секунди, за документами саме його програми.</li><li>Поліс, покриття, ліміти й клініки завжди в телефоні.</li><li>У разі відмови ШІ звіряє її з умовами програми й передає спірний випадок брокеру.</li></ul></div>
     </div>
   </section>
 
   <section class="dsec shell">
-    <span class="eyebrow">Как работает ИИ-чат</span>
+    <span class="eyebrow">Як працює ШІ-чат</span>
     <div class="grid2">
       <div style="display:flex;flex-direction:column;gap:16px">
-        <h2 class="h2">Отвечает только по документам вашей программы</h2>
-        <p>Человек пишет вопрос обычными словами, например называет диагноз или анализ. Система находит нужные куски в договоре и программе страхования именно этого сотрудника и отвечает: покрывается или нет, с каким лимитом, в каких клиниках и что делать дальше.</p>
-        <p>Если в документах ответа нет, ИИ так и говорит и предлагает написать брокеру. Он не ставит диагнозов и не советует лечение: он навигатор по страховке, а не врач.</p>
-        <p>Отдельный сценарий для отказов. Если человеку не оплатили услугу, ИИ проверяет, что сказано в программе, и если отказ противоречит условиям, прямо называет это и передаёт случай команде брокера.</p>
+        <h2 class="h2">Відповідає лише за документами вашої програми</h2>
+        <p>Людина пише запитання звичайними словами, наприклад називає діагноз або аналіз. Система знаходить потрібні фрагменти в договорі та програмі страхування саме цього співробітника й відповідає: покривається чи ні, з яким лімітом, у яких клініках і що робити далі.</p>
+        <p>Якщо в документах відповіді немає, ШІ так і каже й пропонує написати брокеру. Він не ставить діагнозів і не радить лікування: він навігатор по страховці, а не лікар.</p>
+        <p>Окремий сценарій для відмов. Якщо людині не оплатили послугу, ШІ перевіряє, що сказано в програмі, і якщо відмова суперечить умовам, прямо називає це та передає випадок команді брокера.</p>
       </div>
-      <div class="chat" role="img" aria-label="Пример диалога в ИИ-чате">
-        <span class="who">ИИ-чат · пример</span>
+      <div class="chat" role="img" aria-label="Приклад діалогу в ШІ-чаті">
+        <span class="who">ШІ-чат · приклад</span>
         <div class="msg them">Чи покривається МРТ коліна? Лікар дав направлення.</div>
         <div class="msg agent">Так, за Вашою програмою МРТ покривається при медичних показаннях.<br><br>Що зробити: зателефонуйте в Асистанс, щоб погодити дослідження і отримати направлення до клініки з Вашої програми.</div>
         <div class="msg them">А якщо Асистанс відмовить?</div>
         <div class="msg agent">Надішліть причину відмови, і я звірю її з умовами програми. Якщо Ви не погоджуєтесь із рішенням, команда брокера перевірить його.</div>
-        <span class="cap">Иллюстрация ответа, формулировки упрощены</span>
+        <span class="cap">Ілюстрація відповіді, формулювання спрощені</span>
       </div>
     </div>
   </section>
 
   <section class="dsec shell">
-    <span class="eyebrow">Что ещё внутри</span>
-    <h2 class="h2" style="margin-top:16px">Всё по страховке в одном месте</h2>
+    <span class="eyebrow">Що ще всередині</span>
+    <h2 class="h2" style="margin-top:16px">Усе про страховку в одному місці</h2>
     <div class="feat">
-      <div><b>Вход за минуту</b><p>По номеру телефона, код приходит в Telegram. Без паролей.</p></div>
-      <div><b>Мой полис</b><p>Программа, срок действия, что покрывается, лимиты и сам договор.</p></div>
-      <div><b>Клиники</b><p>Только те, что входят в программу, с классами и маршрутом в Google Maps.</p></div>
-      <div><b>Разбор анализов по фото</b><p>ИИ читает бланк, отмечает отклонения от норм этой лаборатории и подсказывает, к какому врачу идти. Файлы нигде не хранятся.</p></div>
-      <div><b>Запись и помощь</b><p>Связь с ассистансом страховой по телефону, Viber или Telegram.</p></div>
-      <div><b>Брокер на связи</b><p>Отказали в покрытии или что-то пошло не так: обращение сразу в команду «Компаньона».</p></div>
-      <div><b>Родственники</b><p>Заявка на страхование родных и список того, что программа не покрывает.</p></div>
-      <div><b>Компенсации</b><p>Какие документы нужны, чтобы вернуть деньги за оплаченное самому.</p></div>
-      <div><b>Кабинет HR</b><p>HR компании-клиента видит своих застрахованных и заявки.</p></div>
+      <div><b>Вхід за хвилину</b><p>За номером телефону, код приходить у Telegram. Без паролів.</p></div>
+      <div><b>Мій поліс</b><p>Програма, строк дії, що покривається, ліміти й сам договір.</p></div>
+      <div><b>Клініки</b><p>Лише ті, що входять до програми, з класами та маршрутом у Google Maps.</p></div>
+      <div><b>Розбір аналізів за фото</b><p>ШІ читає бланк, позначає відхилення від норм цієї лабораторії та підказує, до якого лікаря йти. Файли ніде не зберігаються.</p></div>
+      <div><b>Запис і допомога</b><p>Зв'язок з асистансом страховика телефоном, у Viber або Telegram.</p></div>
+      <div><b>Брокер на зв'язку</b><p>Відмовили в покритті або щось пішло не так: звернення одразу до команди «Компаньйона».</p></div>
+      <div><b>Родичі</b><p>Заявка на страхування рідних і перелік того, що програма не покриває.</p></div>
+      <div><b>Компенсації</b><p>Які документи потрібні, щоб повернути гроші за те, що оплатив сам.</p></div>
+      <div><b>Кабінет HR</b><p>HR компанії-клієнта бачить своїх застрахованих і заявки.</p></div>
     </div>
   </section>
 
   <section class="dsec shell">
-    <span class="eyebrow">Экраны</span>
+    <span class="eyebrow">Екрани</span>
     <div class="gallery phones3">
-      <figure><img src="img/app-login.jpg" alt="Экран входа" loading="lazy"><figcaption>Вход через Telegram</figcaption></figure>
-      <figure><img src="img/app-policy.jpg" alt="Экран полиса" loading="lazy"><figcaption>Мой полис и покрытие</figcaption></figure>
-      <figure><img src="img/app-chat.jpg" alt="ИИ-чат" loading="lazy"><figcaption>ИИ-чат по программе</figcaption></figure>
+      <figure><img src="img/app-login.jpg" alt="Екран входу" loading="lazy"><figcaption>Вхід через Telegram</figcaption></figure>
+      <figure><img src="img/app-policy.jpg" alt="Екран полісу" loading="lazy"><figcaption>Мій поліс і покриття</figcaption></figure>
+      <figure><img src="img/app-chat.jpg" alt="ШІ-чат" loading="lazy"><figcaption>ШІ-чат за програмою</figcaption></figure>
     </div>
-    <div class="stack"><span>Flutter</span><span>Node.js</span><span>Supabase</span><span>Claude и другие модели</span><span>Telegram-вход</span></div>
+    <div class="stack"><span>Flutter</span><span>Node.js</span><span>Supabase</span><span>Claude та інші моделі</span><span>Вхід через Telegram</span></div>
   </section>
-  <div class="shell next"><h3>Хотите такого помощника для ваших клиентов?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Написать в Telegram →</a></div>
+  <div class="shell next"><h3>Хочете такого помічника для ваших клієнтів?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Написати в Telegram →</a></div>
 </main>
 
 <!-- ============ ТЕНДЕРЫ ============ -->
 <main class="view" id="v-tender" hidden>
   <section class="dhero"><div class="shell">
     <div>
-      <span class="tag">Медстрахование · тендеры</span>
-      <h1>Тендер на медстрахование: <em class="s">все предложения в одной таблице</em></h1>
-      <p class="lead">Внутренний инструмент брокера. Компания-клиент выбирает страховку для сотрудников, 10–15 страховых присылают предложения, и система сводит их для честного сравнения.</p>
-      <div class="meta"><span>Статус: <b>работает, идёт первый полный прогон на реальном тендере</b></span><span>Пользователи: <b>брокеры «Компаньона»</b></span></div>
+      <span class="tag">Медстрахування · тендери</span>
+      <h1>Тендер на медстрахування: <em class="s">усі пропозиції в одній таблиці</em></h1>
+      <p class="lead">Внутрішній інструмент брокера. Компанія-клієнт обирає страховку для співробітників, 10–15 страховиків надсилають пропозиції, а система зводить їх для чесного порівняння.</p>
+      <div class="meta"><span>Статус: <b>працює, триває перший повний прогін на реальному тендері</b></span><span>Користувачі: <b>брокери «Компаньйона»</b></span></div>
     </div>
     <div class="dmedia"><video src="video/tender-dms-wide.mp4" poster="img/tender-poster.jpg" controls muted playsinline preload="none"></video></div>
   </div></section>
 
   <section class="dsec shell">
-    <span class="eyebrow">Что оптимизировали</span>
-    <h2 class="h2" style="margin-top:16px">Ручное сравнение десятков Excel-файлов</h2>
+    <span class="eyebrow">Що оптимізували</span>
+    <h2 class="h2" style="margin-top:16px">Ручне порівняння десятків Excel-файлів</h2>
     <div class="ba">
-      <div class="was"><h3>Было</h3><ul><li>Каждая страховая присылает своё Excel-предложение со своей структурой и формулировками.</li><li>Эксперт вручную переносит условия в общую таблицу и ищет, что где покрыто.</li><li>Легко пропустить ограничение или исключение, спрятанное в примечании.</li></ul></div>
-      <div class="now"><h3>Стало</h3><ul><li>Файлы загружаются как есть, без подгонки под шаблон.</li><li>Условия раскладываются по единому списку: покрыто, покрыто с ограничением, не покрыто, неясно.</li><li>Каждое значение ведёт к листу и ячейке исходного файла, его можно проверить в один клик.</li></ul></div>
+      <div class="was"><h3>Було</h3><ul><li>Кожен страховик надсилає свою Excel-пропозицію зі своєю структурою та формулюваннями.</li><li>Експерт вручну переносить умови до спільної таблиці та шукає, що де покрито.</li><li>Легко пропустити обмеження чи виняток, сховані в примітці.</li></ul></div>
+      <div class="now"><h3>Стало</h3><ul><li>Файли завантажуються як є, без підганяння під шаблон.</li><li>Умови розкладаються за єдиним списком: покрито, покрито з обмеженням, не покрито, неясно.</li><li>Кожне значення веде до аркуша й комірки вихідного файлу, його можна перевірити одним кліком.</li></ul></div>
     </div>
   </section>
 
   <section class="dsec shell">
-    <span class="eyebrow">Как работает</span>
-    <h2 class="h2" style="margin-top:16px">Путь брокера по шагам</h2>
+    <span class="eyebrow">Як це працює</span>
+    <h2 class="h2" style="margin-top:16px">Шлях брокера крок за кроком</h2>
     <ol class="flow">
-      <li><b>Запрос клиента</b><p>Загружаем требования клиента и строим матрицу условий.</p></li>
-      <li><b>Выбор страховых</b><p>Отмечаем участников из справочника страховых компаний.</p></li>
-      <li><b>Загрузка предложений</b><p>Перетаскиваем каждой страховой её файл.</p></li>
-      <li><b>Сравнение</b><p>ИИ сопоставляет формулировки страховых с условиями клиента.</p></li>
-      <li><b>Решение эксперта</b><p>Где система не уверена, отвечает брокер прямо в таблице.</p></li>
-      <li><b>Клиники и сервис</b><p>Покрытие клиник по городам и анкета ассистанса из 45 вопросов.</p></li>
+      <li><b>Запит клієнта</b><p>Завантажуємо вимоги клієнта й будуємо матрицю умов.</p></li>
+      <li><b>Вибір страховиків</b><p>Відзначаємо учасників із довідника страхових компаній.</p></li>
+      <li><b>Завантаження пропозицій</b><p>Перетягуємо кожному страховику його файл.</p></li>
+      <li><b>Порівняння</b><p>ШІ зіставляє формулювання страховиків з умовами клієнта.</p></li>
+      <li><b>Рішення експерта</b><p>Де система не впевнена, відповідає брокер прямо в таблиці.</p></li>
+      <li><b>Клініки та сервіс</b><p>Покриття клінік за містами й анкета асистансу з 45 запитань.</p></li>
     </ol>
-    <div class="note"><b>Главное правило</b>ИИ может извлечь и разложить данные, но проверенными их отмечает только человек. Пустая ячейка не превращается в ноль, а неуверенное совпадение помечается как неуверенное.</div>
+    <div class="note"><b>Головне правило</b>ШІ може витягти й розкласти дані, але перевіреними їх позначає лише людина. Порожня комірка не перетворюється на нуль, а невпевнений збіг позначається як невпевнений.</div>
   </section>
 
   <section class="dsec shell">
-    <span class="eyebrow">Для клиента</span>
+    <span class="eyebrow">Для клієнта</span>
     <div class="grid2">
       <div style="display:flex;flex-direction:column;gap:16px">
-        <h2 class="h2">Клиент получает понятную рекомендацию</h2>
-        <p>По итогам брокер показывает, у кого лучше покрытие, исключения, клиники, сервис и цена, и даёт рекомендацию с аргументами. Решение остаётся за клиентом.</p>
-        <p>Анкета сервиса страховой сравнивается как есть: если одна компания пишет «83%», а другая «Не рахуємо», это видно без «причёсывания».</p>
+        <h2 class="h2">Клієнт отримує зрозумілу рекомендацію</h2>
+        <p>Наприкінці брокер показує, у кого краще покриття, винятки, клініки, сервіс і ціна, та дає рекомендацію з аргументами. Рішення залишається за клієнтом.</p>
+        <p>Анкета сервісу страховика порівнюється як є: якщо одна компанія пише «83%», а інша «Не рахуємо», це видно без «причісування».</p>
       </div>
-      <figure class="gallery" style="grid-template-columns:1fr;margin:0"><img src="img/tender.jpg" alt="Предложения страховых" loading="lazy"></figure>
+      <figure class="gallery" style="grid-template-columns:1fr;margin:0"><img src="img/tender.jpg" alt="Пропозиції страховиків" loading="lazy"></figure>
     </div>
-    <div class="stack"><span>Next.js</span><span>Node.js</span><span>Supabase</span><span>Разбор Excel</span><span>Два ИИ-агента: разработчик и проверяющий</span></div>
+    <div class="stack"><span>Next.js</span><span>Node.js</span><span>Supabase</span><span>Розбір Excel</span><span>Два ШІ-агенти: розробник і перевіряльник</span></div>
   </section>
-  <div class="shell next"><h3>Ваши сотрудники тоже сводят таблицы руками?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обсудить →</a></div>
+  <div class="shell next"><h3>Ваші співробітники теж зводять таблиці вручну?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обговорити →</a></div>
 </main>
 
 <!-- ============ ДОГОВОРЫ ============ -->
 <main class="view" id="v-contracts" hidden>
   <section class="dhero"><div class="shell">
     <div>
-      <span class="tag">Медстрахование · юридическая проверка</span>
-      <h1>Проверка договора: <em class="s">ИИ находит, где страховая отступила</em></h1>
-      <p class="lead">После тендера страховая присылает договор. Брокер должен убедиться, что в нём есть все правки, которых он обычно добивается. Теперь это делает система.</p>
-      <div class="meta"><span>Статус: <b>работает в тендерном инструменте</b></span><span>Форматы: <b>Word, Excel</b></span></div>
+      <span class="tag">Медстрахування · юридична перевірка</span>
+      <h1>Перевірка договору: <em class="s">ШІ знаходить, де страховик відступив</em></h1>
+      <p class="lead">Після тендеру страховик надсилає договір. Брокер має переконатися, що в ньому є всі правки, яких він зазвичай домагається. Тепер це робить система.</p>
+      <div class="meta"><span>Статус: <b>працює в тендерному інструменті</b></span><span>Формати: <b>Word, Excel</b></span></div>
     </div>
-    <div class="dmedia"><img src="img/contracts.jpg" alt="Договор на столе"></div>
+    <div class="dmedia"><img src="img/contracts.jpg" alt="Договір на столі"></div>
   </div></section>
   <section class="dsec shell">
-    <span class="eyebrow">Что оптимизировали</span>
+    <span class="eyebrow">Що оптимізували</span>
     <div class="ba">
-      <div class="was"><h3>Было</h3><ul><li>Юрист или брокер вычитывает договор целиком, сверяясь с памятью и прошлыми письмами.</li><li>Договор приходит частями в нескольких файлах.</li><li>Письмо страховой с правками пишется вручную.</li></ul></div>
-      <div class="now"><h3>Стало</h3><ul><li>Система сравнивает договор с реестром типовых правок брокера.</li><li>Несколько файлов проверяются как один договор.</li><li>Готовые формулировки абзацев и письмо страховой с правками.</li></ul></div>
+      <div class="was"><h3>Було</h3><ul><li>Юрист або брокер вичитує договір повністю, звіряючись з пам'яттю та минулими листами.</li><li>Договір приходить частинами в кількох файлах.</li><li>Лист страховику з правками пишеться вручну.</li></ul></div>
+      <div class="now"><h3>Стало</h3><ul><li>Система порівнює договір з реєстром типових правок брокера.</li><li>Кілька файлів перевіряються як один договір.</li><li>Готові формулювання абзаців і лист страховику з правками.</li></ul></div>
     </div>
   </section>
   <section class="dsec shell">
-    <span class="eyebrow">Как работает</span>
+    <span class="eyebrow">Як це працює</span>
     <ol class="flow">
-      <li><b>Загрузка</b><p>До 8 файлов договора, в порядке частей.</p></li>
-      <li><b>Поиск отступлений</b><p>Каждая находка указывает на свой абзац и пример из прошлых договоров.</p></li>
-      <li><b>Новая формулировка</b><p>ИИ переписывает абзац так, как брокер обычно требует.</p></li>
-      <li><b>Письмо и файл</b><p>Письмо страховой и Word-файл с правками в режиме отслеживания изменений.</p></li>
-      <li><b>Обучение</b><p>Принятые правки сохраняются и учитываются в следующих проверках.</p></li>
+      <li><b>Завантаження</b><p>До 8 файлів договору, у порядку частин.</p></li>
+      <li><b>Пошук відступів</b><p>Кожна знахідка вказує на свій абзац і приклад з минулих договорів.</p></li>
+      <li><b>Нове формулювання</b><p>ШІ переписує абзац так, як зазвичай вимагає брокер.</p></li>
+      <li><b>Лист і файл</b><p>Лист страховику та Word-файл з правками в режимі відстеження змін.</p></li>
+      <li><b>Навчання</b><p>Прийняті правки зберігаються й враховуються в наступних перевірках.</p></li>
     </ol>
   </section>
-  <div class="shell next"><h3>Проверяете много однотипных договоров?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обсудить →</a></div>
+  <div class="shell next"><h3>Перевіряєте багато однотипних договорів?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обговорити →</a></div>
 </main>
 
 <!-- ============ УЧЁТ ============ -->
 <main class="view" id="v-uchet" hidden>
   <section class="dhero"><div class="shell">
     <div>
-      <span class="tag">Медстрахование · бэк-офис</span>
-      <h1>Учёт брокера: <em class="s">из 1С в браузер</em></h1>
-      <p class="lead">Веб-система учёта договоров, платежей, актов страховых и комиссии менеджеров. Повторяет рабочий процесс 1С «СБ Компаньон», но работает из любого места и многое делает сама.</p>
-      <div class="meta"><span>Статус: <b>работает у команды</b></span><span>Роли: <b>руководитель, куратор, менеджер</b></span></div>
+      <span class="tag">Медстрахування · бек-офіс</span>
+      <h1>Облік брокера: <em class="s">з 1С у браузер</em></h1>
+      <p class="lead">Веб-система обліку договорів, платежів, актів страховиків і комісії менеджерів. Повторює робочий процес 1С «СБ Компаньйон», але працює з будь-якого місця й багато що робить сама.</p>
+      <div class="meta"><span>Статус: <b>працює в команди</b></span><span>Ролі: <b>керівник, куратор, менеджер</b></span></div>
     </div>
-    <div class="dmedia"><img src="img/uchet-contract.jpg" alt="Карточка договора"></div>
+    <div class="dmedia"><img src="img/uchet-contract.jpg" alt="Картка договору"></div>
   </div></section>
   <section class="dsec shell">
-    <span class="eyebrow">Что оптимизировали</span>
+    <span class="eyebrow">Що оптимізували</span>
     <div class="ba">
-      <div class="was"><h3>Было</h3><ul><li>1С открывалась только через удалённый рабочий стол.</li><li>Комиссию по менеджерам считал один человек.</li><li>Акты страховых и оплаты сверялись вручную.</li></ul></div>
-      <div class="now"><h3>Стало</h3><ul><li>Работа из браузера, у каждого свой логин и свои права.</li><li>Комиссия делится между куратором, менеджером и бюро автоматически, менеджер видит свой доход сам.</li><li>Акты и банковские поступления сверяются с договорами системой.</li></ul></div>
+      <div class="was"><h3>Було</h3><ul><li>1С відкривалась лише через віддалений робочий стіл.</li><li>Комісію за менеджерами рахувала одна людина.</li><li>Акти страховиків і оплати звірялися вручну.</li></ul></div>
+      <div class="now"><h3>Стало</h3><ul><li>Робота з браузера, у кожного свій логін і свої права.</li><li>Комісія ділиться між куратором, менеджером і бюро автоматично, менеджер сам бачить свій дохід.</li><li>Акти й банківські надходження система звіряє з договорами.</li></ul></div>
     </div>
   </section>
   <section class="dsec shell">
-    <span class="eyebrow">Как работает</span>
+    <span class="eyebrow">Як це працює</span>
     <ol class="flow">
-      <li><b>Договор</b><p>Страхователь, страховая, суммы, тариф, комиссия и доли участников с проверкой на 100%.</p></li>
-      <li><b>График платежей</b><p>Система напоминает о просрочках и договорах на продление.</p></li>
-      <li><b>Акт страховой</b><p>Загружаете акт в PDF, Excel или CSV, система сама находит договоры по номерам.</p></li>
-      <li><b>Банк</b><p>Вставляете выписку, система находит поступления и ставит их к нужному акту.</p></li>
-      <li><b>Расчёт прибыли</b><p>Комиссия за период распределяется по менеджерам с детализацией по договорам.</p></li>
+      <li><b>Договір</b><p>Страхувальник, страховик, суми, тариф, комісія та частки учасників із перевіркою на 100%.</p></li>
+      <li><b>Графік платежів</b><p>Система нагадує про прострочення та договори на продовження.</p></li>
+      <li><b>Акт страховика</b><p>Завантажуєте акт у PDF, Excel або CSV, система сама знаходить договори за номерами.</p></li>
+      <li><b>Банк</b><p>Вставляєте виписку, система знаходить надходження й прив'язує їх до потрібного акту.</p></li>
+      <li><b>Розрахунок прибутку</b><p>Комісія за період розподіляється між менеджерами з деталізацією за договорами.</p></li>
     </ol>
-    <div class="note"><b>Как переносили из 1С</b>Конфигурация была доступна только с экрана, без выгрузки. Логику восстановили по формам и проверили на реальном договоре: премия 440,80 грн, комиссия 110,20, куратору 73,28, менеджеру 31,41. Совпало с 1С до копейки.</div>
+    <div class="note"><b>Як переносили з 1С</b>Конфігурація була доступна лише з екрана, без вивантаження. Логіку відновили за формами та перевірили на реальному договорі: премія 440,80 грн, комісія 110,20, куратору 73,28, менеджеру 31,41. Збіглося з 1С до копійки.</div>
   </section>
   <section class="dsec shell">
-    <span class="eyebrow">Экраны</span>
+    <span class="eyebrow">Екрани</span>
     <div class="gallery">
-      <figure><img src="img/uchet-reconcile.jpg" alt="Сверка актов" loading="lazy"><figcaption>Сверка актов страховых с договорами</figcaption></figure>
-      <figure><img src="img/uchet-bank.jpg" alt="Банковские поступления" loading="lazy"><figcaption>Поиск оплат в банковской выписке</figcaption></figure>
-      <figure><img src="img/uchet-contract.jpg" alt="Новый договор" loading="lazy"><figcaption>Карточка договора с распределением долей</figcaption></figure>
-      <figure><img src="img/uchet-login.jpg" alt="Вход" loading="lazy"><figcaption>Вход для сотрудников</figcaption></figure>
+      <figure><img src="img/uchet-reconcile.jpg" alt="Звірка актів" loading="lazy"><figcaption>Звірка актів страховиків з договорами</figcaption></figure>
+      <figure><img src="img/uchet-bank.jpg" alt="Банківські надходження" loading="lazy"><figcaption>Пошук оплат у банківській виписці</figcaption></figure>
+      <figure><img src="img/uchet-contract.jpg" alt="Новий договір" loading="lazy"><figcaption>Картка договору з розподілом часток</figcaption></figure>
+      <figure><img src="img/uchet-login.jpg" alt="Вхід" loading="lazy"><figcaption>Вхід для співробітників</figcaption></figure>
     </div>
-    <p style="margin-top:14px;color:var(--muted);font-size:.9rem">Скриншоты сделаны на пустой демо-базе, без данных клиентов.</p>
-    <div class="stack"><span>React</span><span>Node.js</span><span>Docker</span><span>Telegram-уведомления</span></div>
+    <p style="margin-top:14px;color:var(--muted);font-size:.9rem">Скриншоти зроблено на порожній демо-базі, без даних клієнтів.</p>
+    <div class="stack"><span>React</span><span>Node.js</span><span>Docker</span><span>Telegram-сповіщення</span></div>
   </section>
-  <div class="shell next"><h3>Устали от старой 1С?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обсудить →</a></div>
+  <div class="shell next"><h3>Втомилися від старої 1С?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обговорити →</a></div>
 </main>
 
 <!-- ============ ВИЛЛЫ ============ -->
 <main class="view" id="v-villa" hidden>
   <section class="dhero"><div class="shell">
     <div>
-      <span class="tag">Аренда вилл · Ко Пханган</span>
-      <h1>ИИ-управляющий <em class="s">двумя виллами на Airbnb</em></h1>
-      <p class="lead">Один агент ведёт гостей, клинера и бассейнщика. Работает в облаке круглосуточно, а хозяину пишет только тогда, когда нужно его решение.</p>
-      <div class="meta"><span>Статус: <b>работает сам, 2 виллы</b></span><span>Языки: <b>русский, английский, тайский</b></span></div>
+      <span class="tag">Оренда віл · Ко Пханган</span>
+      <h1>ШІ-управитель <em class="s">двома віллами на Airbnb</em></h1>
+      <p class="lead">Один агент веде гостей, клінера й майстра з басейну. Працює в хмарі цілодобово, а власнику пише лише тоді, коли потрібне його рішення.</p>
+      <div class="meta"><span>Статус: <b>працює сам, 2 вілли</b></span><span>Мови: <b>російська, англійська, тайська</b></span></div>
     </div>
-    <div class="chat" role="img" aria-label="Пример переписки агента">
-      <span class="who">LINE · клинер</span>
+    <div class="chat" role="img" aria-label="Приклад листування агента">
+      <span class="who">LINE · клінер</span>
       <div class="msg agent">Hi! Guests check out Sunday at 11. Can you clean the villa at 12?</div>
       <div class="msg them">ok ka, 12 is fine 👍</div>
       <div class="msg agent">Thank you! I'll remind you on Saturday evening.</div>
-      <span class="who" style="margin-top:8px">Telegram · хозяин</span>
-      <div class="msg owner">Уборка на воскресенье в 12:00 согласована. Бассейн перенёс на понедельник, чтобы не мешать гостям.</div>
-      <span class="cap">Пример переписки</span>
+      <span class="who" style="margin-top:8px">Telegram · власник</span>
+      <div class="msg owner">Прибирання на неділю о 12:00 погоджено. Басейн переніс на понеділок, щоб не заважати гостям.</div>
+      <span class="cap">Приклад листування</span>
     </div>
   </div></section>
   <section class="dsec shell">
-    <span class="eyebrow">Что оптимизировали</span>
+    <span class="eyebrow">Що оптимізували</span>
     <div class="ba">
-      <div class="was"><h3>Было</h3><ul><li>Хозяин сам отвечал гостям в Airbnb.</li><li>Сам договаривался с клинером о каждой уборке и проверял, что её сделали.</li><li>Сам согласовывал бассейнщика так, чтобы он не мешал гостям.</li></ul></div>
-      <div class="now"><h3>Стало</h3><ul><li>Агент готовит ответы гостям, хозяин только нажимает «ок».</li><li>Уборки согласуются, напоминаются и проверяются без хозяина.</li><li>О сорванной уборке, поломке или отказе хозяин узнаёт сразу, в любое время.</li></ul></div>
+      <div class="was"><h3>Було</h3><ul><li>Власник сам відповідав гостям в Airbnb.</li><li>Сам домовлявся з клінером про кожне прибирання й перевіряв, що його зроблено.</li><li>Сам узгоджував майстра з басейну так, щоб він не заважав гостям.</li></ul></div>
+      <div class="now"><h3>Стало</h3><ul><li>Агент готує відповіді гостям, власник лише натискає «ок».</li><li>Прибирання узгоджуються, нагадуються й перевіряються без власника.</li><li>Про зірване прибирання, поломку чи відмову власник дізнається одразу, у будь-який час.</li></ul></div>
     </div>
   </section>
   <section class="dsec shell">
-    <span class="eyebrow">Как работает</span>
+    <span class="eyebrow">Як це працює</span>
     <ol class="flow">
-      <li><b>Бронь</b><p>Агент видит календарь и сообщения гостей обеих вилл.</p></li>
-      <li><b>Гости</b><p>Инструкция накануне заезда, подборка мест на второй день, ответы на вопросы. Отправка после «ок» хозяина.</p></li>
-      <li><b>Уборка</b><p>За пару дней предлагает клинеру время, накануне напоминает, в день уборки ждёт «готово».</p></li>
-      <li><b>Бассейн</b><p>Раз в неделю, в удобное время и так, чтобы гости были в приоритете. Фото от бассейнщика пересылает хозяину.</p></li>
-      <li><b>Хозяин</b><p>Отчёты и всё, что требует решения, в Telegram.</p></li>
+      <li><b>Бронь</b><p>Агент бачить календар і повідомлення гостей обох віл.</p></li>
+      <li><b>Гості</b><p>Інструкція напередодні заїзду, добірка місць на другий день, відповіді на запитання. Надсилання після «ок» власника.</p></li>
+      <li><b>Прибирання</b><p>За пару днів пропонує клінеру час, напередодні нагадує, у день прибирання чекає «готово».</p></li>
+      <li><b>Басейн</b><p>Раз на тиждень, у зручний час і так, щоб гості були в пріоритеті. Фото від майстра з басейну пересилає власнику.</p></li>
+      <li><b>Власник</b><p>Звіти й усе, що потребує рішення, у Telegram.</p></li>
     </ol>
-    <div class="note"><b>Защита в коде, а не в промпте</b>Тихие часы, суточный лимит сообщений и запрет повторов проверяет программа до отправки. Модель может передумать, проверка в коде нет. Агент проверен на отказах, переносах, встречных вопросах и ложных отчётах «уже убрано».</div>
+    <div class="note"><b>Захист у коді, а не в промпті</b>Тихі години, добовий ліміт повідомлень і заборону повторів перевіряє програма до надсилання. Модель може передумати, перевірка в коді — ні. Агента перевірено на відмовах, перенесеннях, зустрічних запитаннях і хибних звітах «вже прибрано».</div>
   </section>
   <section class="dsec shell">
     <span class="eyebrow">Для гостей</span>
-    <h2 class="h2" style="margin-top:16px">Онлайн-книги виллы</h2>
-    <p style="margin-top:12px;max-width:40em;color:var(--muted)">У каждой виллы своя страница для гостей: как устроен дом, как добраться, пляжи, где поесть и что делать, если что-то сломалось. Открывается по QR-коду в доме.</p>
+    <h2 class="h2" style="margin-top:16px">Онлайн-книги вілли</h2>
+    <p style="margin-top:12px;max-width:40em;color:var(--muted)">У кожної вілли своя сторінка для гостей: як влаштований дім, як дістатися, пляжі, де поїсти та що робити, якщо щось зламалося. Відкривається за QR-кодом у домі.</p>
     <div class="gallery phones3" style="max-width:640px;grid-template-columns:1fr 1fr">
-      <figure><img src="img/villa-cliffside.jpg" alt="Книга виллы Cliffside" loading="lazy"><figcaption>Cliffside</figcaption></figure>
-      <figure><img src="img/villa-serenity.jpg" alt="Книга виллы Serenity Lake" loading="lazy"><figcaption>Serenity Lake</figcaption></figure>
+      <figure><img src="img/villa-cliffside.jpg" alt="Книга вілли Cliffside" loading="lazy"><figcaption>Cliffside</figcaption></figure>
+      <figure><img src="img/villa-serenity.jpg" alt="Книга вілли Serenity Lake" loading="lazy"><figcaption>Serenity Lake</figcaption></figure>
     </div>
     <div class="urls"><a href="https://phanganhomecare.com" target="_blank" rel="noopener">phanganhomecare.com</a></div>
     <div class="stack"><span>Python</span><span>Claude</span><span>LINE</span><span>Telegram</span><span>Hospitable</span><span>Supabase</span><span>GitHub Actions</span></div>
   </section>
-  <div class="shell next"><h3>Сдаёте недвижимость и устали от переписки?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обсудить →</a></div>
+  <div class="shell next"><h3>Здаєте нерухомість і втомилися від листування?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обговорити →</a></div>
 </main>
 
 <!-- ============ САЙТ ============ -->
 <main class="view" id="v-site" hidden>
   <section class="dhero"><div class="shell">
     <div>
-      <span class="tag">Медстрахование · продажи B2B</span>
-      <h1>Сайт брокера, <em class="s">который показывает, откуда клиенты</em></h1>
-      <p class="lead">Новый B2B-сайт страхового брокера «Компаньон» вместо сайта на конструкторе. Каждая заявка приходит в Telegram вместе с рекламным источником.</p>
-      <div class="meta"><span>Статус: <b>работает</b></span><span>Язык: <b>украинский</b></span></div>
+      <span class="tag">Медстрахування · продажі B2B</span>
+      <h1>Сайт брокера, <em class="s">який показує, звідки клієнти</em></h1>
+      <p class="lead">Новий B2B-сайт страхового брокера «Компаньйон» замість сайту на конструкторі. Кожна заявка надходить у Telegram разом із рекламним джерелом.</p>
+      <div class="meta"><span>Статус: <b>працює</b></span><span>Мова: <b>українська</b></span></div>
       <div class="urls"><a href="https://icompanion.com.ua" target="_blank" rel="noopener">icompanion.com.ua</a></div>
     </div>
-    <div class="dmedia"><img src="img/site-home.jpg" alt="Главная страница сайта"></div>
+    <div class="dmedia"><img src="img/site-home.jpg" alt="Головна сторінка сайту"></div>
   </div></section>
   <section class="dsec shell">
-    <span class="eyebrow">Что оптимизировали</span>
+    <span class="eyebrow">Що оптимізували</span>
     <div class="ba">
-      <div class="was"><h3>Было</h3><ul><li>Сайт на конструкторе, заявки без источника.</li><li>Непонятно, какая реклама окупается.</li><li>Презентации клиентам собирались вручную.</li></ul></div>
-      <div class="now"><h3>Стало</h3><ul><li>Формы по направлениям, заявка мгновенно в Telegram.</li><li>В каждой заявке видны кампания, источник и ключевое слово.</li><li>Персональные страницы-презентации с видео под конкретного клиента.</li></ul></div>
+      <div class="was"><h3>Було</h3><ul><li>Сайт на конструкторі, заявки без джерела.</li><li>Незрозуміло, яка реклама окупається.</li><li>Презентації клієнтам збиралися вручну.</li></ul></div>
+      <div class="now"><h3>Стало</h3><ul><li>Форми за напрямами, заявка миттєво в Telegram.</li><li>У кожній заявці видно кампанію, джерело й ключове слово.</li><li>Персональні сторінки-презентації з відео під конкретного клієнта.</li></ul></div>
     </div>
   </section>
   <section class="dsec shell">
-    <span class="eyebrow">Страницы</span>
+    <span class="eyebrow">Сторінки</span>
     <div class="gallery">
-      <figure><img src="img/site-dms.jpg" alt="Страница корпоративного ДМС" loading="lazy"><figcaption>Корпоративное ДМС: форма «разбор вашей программы»</figcaption></figure>
-      <figure><img src="img/site-bizzabo.jpg" alt="Персональная презентация" loading="lazy"><figcaption>Персональная страница-презентация для клиента</figcaption></figure>
+      <figure><img src="img/site-dms.jpg" alt="Сторінка корпоративного ДМС" loading="lazy"><figcaption>Корпоративне ДМС: форма «розбір вашої програми»</figcaption></figure>
+      <figure><img src="img/site-bizzabo.jpg" alt="Персональна презентація" loading="lazy"><figcaption>Персональна сторінка-презентація для клієнта</figcaption></figure>
     </div>
     <div class="feat">
-      <div><b>Видео-ролики с ИИ</b><p>Объяснение тендера и приложения в коротких роликах с ИИ-озвучкой, без студии.</p></div>
-      <div><b>Калькулятор и чек-лист</b><p>Стоимость ДМС и чек-лист проверки программы для HR.</p></div>
-      <div><b>Быстрый сайт</b><p>Главная отрисована заранее и открывается даже без JavaScript.</p></div>
+      <div><b>Відеоролики зі ШІ</b><p>Пояснення тендеру й застосунку в коротких роликах зі ШІ-озвучкою, без студії.</p></div>
+      <div><b>Калькулятор і чек-лист</b><p>Вартість ДМС і чек-лист перевірки програми для HR.</p></div>
+      <div><b>Швидкий сайт</b><p>Головна відрендерена заздалегідь і відкривається навіть без JavaScript.</p></div>
     </div>
   </section>
-  <div class="shell next"><h3>Нужен сайт, который продаёт?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обсудить →</a></div>
+  <div class="shell next"><h3>Потрібен сайт, який продає?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Обговорити →</a></div>
 </main>
 
 <!-- ============ МЕЛКИЕ ============ -->
 <main class="view" id="v-more" hidden>
   <section class="dhero"><div class="shell">
     <div>
-      <span class="tag">Небольшие проекты</span>
-      <h1>ИИ помогает <em class="s">и в мелочах</em></h1>
-      <p class="lead">Не всё должно быть большой системой. Иногда хватает маленького инструмента, который каждый день экономит полчаса.</p>
+      <span class="tag">Невеликі проєкти</span>
+      <h1>ШІ допомагає <em class="s">і в дрібницях</em></h1>
+      <p class="lead">Не все має бути великою системою. Іноді вистачає маленького інструмента, що щодня заощаджує півгодини.</p>
     </div>
-    <div class="dmedia"><img src="img/pets.jpg" alt="Игра Maths Pets"></div>
+    <div class="dmedia"><img src="img/pets.jpg" alt="Гра Maths Pets"></div>
   </div></section>
   <section class="dsec shell">
     <div class="grid2">
       <div style="display:flex;flex-direction:column;gap:14px">
         <span class="eyebrow">Maths Pets</span>
-        <h2 class="h2">Игра, после которой ребёнок сам просит заниматься</h2>
-        <p><b>Задача.</b> Дочке во 3-м классе британской школы трудно складывать двузначные числа с переходом через десяток, а ещё надо учить таблицу умножения.</p>
-        <p><b>Как работает.</b> Игра в браузере планшета на английском. За решённые примеры растёт коллекция зверей и их домик. При ошибке пример разбирается по десяткам. Папа раз в день получает короткий отчёт: сколько занималась и какая ошибка мешает.</p>
+        <h2 class="h2">Гра, після якої дитина сама просить займатися</h2>
+        <p><b>Задача.</b> Доньці засновника в 3-му класі британської школи важко додавати двозначні числа з переходом через десяток, а ще треба вчити таблицю множення.</p>
+        <p><b>Як працює.</b> Гра в браузері планшета англійською. За розв'язані приклади росте колекція звірів і їхній будиночок. У разі помилки приклад розбирається за десятками. Тато раз на день отримує короткий звіт: скільки займалася та яка помилка заважає.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
         <span class="eyebrow">Improv House</span>
-        <h2 class="h2">Сайт зала для почасовой аренды</h2>
-        <p>Страница зала на Ко Пханган с бронированием через WhatsApp. Следующий шаг в работе: агенты, которые сами ведут брони.</p>
+        <h2 class="h2">Сайт залу для погодинної оренди</h2>
+        <p>Сторінка залу на Ко Пханган із бронюванням через WhatsApp. Наступний крок у роботі: агенти, які самі ведуть бронювання.</p>
         <span class="eyebrow" style="margin-top:20px">LayoutFix</span>
-        <h2 class="h2">Исправление раскладки на Mac</h2>
-        <p>Набрал «ghbdtn» вместо «привет»? Утилита сама переводит текст в правильную раскладку.</p>
+        <h2 class="h2">Виправлення розкладки на Mac</h2>
+        <p>Набрали «ghbdsn» замість «привіт»? Утиліта сама переводить текст у правильну розкладку.</p>
       </div>
     </div>
   </section>
-  <div class="shell next"><h3>Есть рутина, которая бесит каждый день?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Расскажите →</a></div>
+  <div class="shell next"><h3>Є рутина, що бісить щодня?</h3><a class="btn btn-ink" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Розкажіть →</a></div>
 </main>
 
 <!-- общий финал -->
 <section class="lcta"><div class="shell">
-  <h2>Расскажите, что съедает время вашей команды. За 30 минут бесплатно покажу, что отдать ИИ.</h2>
+  <h2>Розкажіть, що з'їдає час вашої команди. За 30 хвилин безкоштовно покажемо, що віддати ШІ.</h2>
   <div class="side">
-    <a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Записаться на разбор →</a>
+    <a class="btn btn-lime" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Записатися на розбір →</a>
     <small>Telegram: @EgorMuratov</small>
   </div>
 </div></section>
 
 <template id="topbar-tpl">
-  <div class="topbar"><div class="shell"><button class="back" type="button" data-go="home">Все проекты</button><span class="who">Егор Муратов · ИИ-внедрение</span></div></div>
+  <div class="topbar"><div class="shell"><button class="back" type="button" data-go="home">Усі проєкти</button><span class="who">StopRoutine · ШІ-впровадження</span><span class="lang" aria-label="Мова"><a href="/" hreflang="uk" lang="uk" class="on" aria-current="page">UA</a><span aria-hidden="true">·</span><a href="/en/" hreflang="en" lang="en">EN</a></span></div></div>
 </template>
 
 <script>
@@ -822,7 +833,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     if(cur==='home') lastHomeScroll=window.scrollY;
     VIEWS.forEach(function(x){document.getElementById('v-'+x).hidden=(x!==v)});
     if(v==='home'){
-      if(scrollTarget){var t=document.getElementById(scrollTarget);if(t)t.scrollIntoView({block:'center'});}
+      if(scrollTarget){var t=document.getElementById(scrollTarget);if(t){ if(t.id==='projects') window.scrollTo(0,t.getBoundingClientRect().top+window.scrollY+window.innerHeight); /* сетка проектов полностью развёрнута */ else t.scrollIntoView({block:'center'}); }}
       else window.scrollTo(0,lastHomeScroll);
     } else window.scrollTo(0,0);
   }
