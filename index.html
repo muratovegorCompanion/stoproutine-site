@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta property="og:title" content="Егор Муратов, ИИ-внедрение">
 <meta property="og:description" content="Убираю рутину из бизнеса с помощью ИИ. Начал со своего.">
-<meta property="og:image" content="https://stoproutine.com/s/poster.webp">
+<meta property="og:image" content="https://stoproutine.com/s/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://stoproutine.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Analytics 4: вставьте сюда ID вида G-XXXXXXX, пока пусто — ничего не грузится и ничего не считается -->
+<meta name="ga-id" content="">
 <style>body{margin:0}[hidden]:not([hidden=until-found i]){display:none!important}img{max-width:100%}</style>
 <link rel="preload" as="image" href="s/poster.webp" media="(min-width:701px)">
 <link rel="preload" as="image" href="s/poster-m.webp" media="(max-width:700px)">
@@ -290,6 +297,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (min-width:901px){#v-home .lh-hero .shell.wide{grid-template-columns:200px 1fr;gap:36px}#v-home .lh-hero .wide img{width:200px;height:250px}}
 @media (max-width:1100px){.reel-flow .wide .lh-gets{grid-template-columns:1fr 1fr}}
 /* Точки связи */
+.reel-flow .open-cta{margin-top:26px;padding:13px 22px;font-size:15px}
 .cta-inline{align-self:flex-start;margin-top:6px}
 .unfold-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px}
 .unfold-head .btn{padding:12px 20px;font-size:15px}
@@ -365,7 +373,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   <div class="reel-top"><span><b>Егор Муратов</b> · ИИ-внедрение</span><span class="reel-nav"><span>01 Хаос</span><span>02 Разбор</span><span>03 Порядок</span><span>04 Проекты</span><span>05 Система</span><span>06 Ваш ход</span></span></div>
   <div class="reel-ruler"><i id="reel-bar"></i><em id="reel-load"></em></div>
   <div class="reel-flow" id="flow">
-  <section class="cap cap-open"><i class="mk" data-f="0"></i><div class="shell"><small>01 / Хаос</small><h2>Excel,<br>договоры,<br><i>переписка</i></h2><p>10–15 файлов от разных партнёров, у каждого своя структура. Сотрудник сводит их руками и боится пропустить строчку в примечании.</p></div><div class="hint" id="reel-hint">Листайте ↓</div></section>
+  <section class="cap cap-open"><i class="mk" data-f="0"></i><div class="shell"><small>01 / Хаос</small><h2>Excel,<br>договоры,<br><i>переписка</i></h2><p>10–15 файлов от разных партнёров, у каждого своя структура. Сотрудник сводит их руками и боится пропустить строчку в примечании.</p><a class="btn btn-lime open-cta" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Бесплатный разбор 30 минут →</a></div><div class="hint" id="reel-hint">Листайте ↓</div></section>
   <i class="mk" data-f="48"></i>
   <section class="cap"><div class="shell"><small>02 / Разбор</small><h2>ИИ<br>раскладывает<br><i>по полочкам</i></h2><p>Каждое условие на своё место: покрыто, с ограничением, не покрыто, неясно. Где система не уверена, она так и говорит.</p></div></section>
   <i class="mk" data-f="95"></i>
@@ -922,4 +930,18 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 })();
 </script>
 
+<script>
+/* Аналитика: включается, только когда в <meta name="ga-id"> вписан ID. Считаем посещения и нажатия на кнопки связи. */
+(function(){
+  var m=document.querySelector('meta[name="ga-id"]'), id=m&&m.content.trim();
+  if(!id) return;
+  var t=document.createElement('script'); t.async=true; t.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id); document.head.appendChild(t);
+  window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments)} window.gtag=gtag;
+  gtag('js',new Date()); gtag('config',id);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href*="t.me/"],a[href^="mailto:"],a[href^="tel:"]'); if(!a) return;
+    gtag('event','generate_lead',{method:a.href.split(':')[0]==='https'?'telegram':a.href.split(':')[0], link_text:(a.textContent||'').trim().slice(0,60)});
+  });
+})();
+</script>
 </body></html>
