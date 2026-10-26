@@ -18,6 +18,9 @@
 <style>body{margin:0}[hidden]:not([hidden=until-found i]){display:none!important}img{max-width:100%}</style>
 <link rel="preload" as="image" href="s/poster.webp" media="(min-width:701px)">
 <link rel="preload" as="image" href="s/poster-m.webp" media="(max-width:700px)">
+<link rel="icon" type="image/svg+xml" href="brand/stoproutine-symbol.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="brand/favicon-48.png">
+<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 <title>StopRoutine — AI implementation agency</title>
 <meta name="description" content="We remove routine from business with AI. We started with our own.">
 <link rel="alternate" hreflang="uk" href="https://stoproutine.com/">
@@ -353,6 +356,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .reel-ruler em{position:absolute;right:0;bottom:12px;font-style:normal;font-size:.68rem;letter-spacing:.14em;color:rgba(255,255,255,.45)}
 @media (max-width:1100px){.reel-nav{display:none}}
 /* Language switch */
+/* Логотип в шапке */
+.brand{display:inline-flex;align-items:center;gap:12px;min-width:0}
+.brand-logo{display:block;height:26px;width:auto}
+.brand em{font-style:normal;color:rgba(255,255,255,.5);white-space:nowrap}
+@media (max-width:480px){.brand em{display:none}.brand-logo{height:20px}}
 .lang{display:flex;gap:.5em;flex:none;white-space:nowrap;pointer-events:auto}
 .lang a{color:inherit;text-decoration:none}
 .lang a.on{color:var(--lime)}
@@ -382,7 +390,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <!-- ============ ГЛАВНАЯ ============ -->
 <main class="view" id="v-home">
   <div class="reel" aria-hidden="true"><canvas id="reel"></canvas><div class="reel-shade"></div></div>
-  <div class="reel-top"><span><b>StopRoutine</b> · AI implementation</span><span class="reel-nav"><span>01 Chaos</span><span>02 Breakdown</span><span>03 Order</span><span>04 Projects</span><span>05 System</span><span>06 Your move</span></span><span class="lang" aria-label="Language"><a href="/" hreflang="uk" lang="uk">UA</a><span aria-hidden="true">·</span><a href="/en/" hreflang="en" lang="en" class="on" aria-current="page">EN</a></span></div>
+  <div class="reel-top"><span class="brand"><img class="brand-logo" src="brand/stoproutine-logo-dark.svg" alt="StopRoutine" width="132" height="24"><em>AI implementation</em></span><span class="reel-nav"><span>01 Chaos</span><span>02 Breakdown</span><span>03 Order</span><span>04 Projects</span><span>05 System</span><span>06 Your move</span></span><span class="lang" aria-label="Language"><a href="/" hreflang="uk" lang="uk">UA</a><span aria-hidden="true">·</span><a href="/en/" hreflang="en" lang="en" class="on" aria-current="page">EN</a></span></div>
   <div class="reel-ruler"><i id="reel-bar"></i><em id="reel-load"></em></div>
   <div class="reel-flow" id="flow">
   <section class="cap cap-open"><i class="mk" data-f="0"></i><div class="shell"><small>01 / Chaos</small><h2>Excel,<br>contracts,<br><i>messages</i></h2><p>10–15 files from different partners, each with its own structure. An employee merges them by hand and worries about missing a line in a note.</p><a class="btn btn-lime open-cta" href="https://t.me/EgorMuratov" target="_blank" rel="noopener">Free 30-minute review →</a></div><div class="hint" id="reel-hint">Scroll ↓</div></section>
@@ -816,7 +824,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 </div></section>
 
 <template id="topbar-tpl">
-  <div class="topbar"><div class="shell"><button class="back" type="button" data-go="home">All projects</button><span class="who">StopRoutine · AI implementation</span><span class="lang" aria-label="Language"><a href="/" hreflang="uk" lang="uk">UA</a><span aria-hidden="true">·</span><a href="/en/" hreflang="en" lang="en" class="on" aria-current="page">EN</a></span></div></div>
+  <div class="topbar"><div class="shell"><button class="back" type="button" data-go="home">All projects</button><span class="who brand"><img class="brand-logo" src="brand/stoproutine-logo-dark.svg" alt="StopRoutine" width="132" height="24"></span><span class="lang" aria-label="Language"><a href="/" hreflang="uk" lang="uk">UA</a><span aria-hidden="true">·</span><a href="/en/" hreflang="en" lang="en" class="on" aria-current="page">EN</a></span></div></div>
 </template>
 
 <script>
