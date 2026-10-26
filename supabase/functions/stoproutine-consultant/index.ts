@@ -10,6 +10,9 @@ const MODEL = "claude-opus-5-5";
 const MAX_USER_CHARS = 1500;
 const MAX_USER_MESSAGES = 14;
 const MAX_IP_PER_HOUR = 40;
+// Cap for all visitors together: the per-IP limit can be dodged by rotating or spoofing addresses,
+// this one bounds model cost and Telegram volume regardless.
+const MAX_GLOBAL_PER_HOUR = 300;
 const MAX_ASSISTANT_CHARS = 6000;
 
 const ALLOWED_ORIGINS = ["https://stoproutine.com", "https://www.stoproutine.com"];
@@ -199,6 +202,10 @@ Deno.serve(async (req: Request) => {
   try {
     const r = await sql`select stoproutine.consultant_hit(${ipHash}, ${MAX_IP_PER_HOUR}) as ok`;
     within = r[0]?.ok === true;
+    if (within) {
+      const g = await sql`select stoproutine.consultant_hit('global', ${MAX_GLOBAL_PER_HOUR}) as ok`;
+      within = g[0]?.ok === true;
+    }
   } catch (e) {
     console.error("rate check failed", e instanceof Error ? e.message : String(e));
     return json({ error: "storage_error" }, 500, origin);

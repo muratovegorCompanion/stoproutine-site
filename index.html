@@ -1045,7 +1045,7 @@ html.cs-lock,html.cs-lock body{overflow:hidden}
 <script>
 /* ===== AI-консультант / AI consultant: panel, chat, avatar clips, map card =====
    Endpoint: <meta name="consultant-endpoint">; empty = feature off. For testing, ?consultant=<url> overrides it
-   (only local addresses or https://*.supabase.co are accepted). */
+   (only local http addresses are accepted, so a link cannot point visitors at a foreign server). */
 (function(){
   var T={"lang": "uk", "fab": "Розібрати мою рутину з ШІ", "cap": "ШІ-асистент Єгора Муратова", "close": "Закрити", "ph": "Ваша відповідь…", "send": "Надіслати", "disc": "ШІ може помилятися. Не вказуйте персональні дані ваших клієнтів.", "greeting": "Привіт! Я ШІ-асистент Єгора Муратова. Поставлю 5–7 коротких запитань про ваш бізнес і покажу «Карту рутини»: три процеси, які варто віддати ШІ першими. Будь ласка, не вказуйте персональні дані ваших клієнтів.\n\nЧим займається ваша компанія?", "thinking": "Асистент думає", "error": "Не вдалося отримати відповідь. Ваше повідомлення збережено в полі, спробуйте ще раз.", "rate": "Забагато запитів. Спробуйте, будь ласка, через годину або напишіть у Telegram.", "limit": "Ліміт повідомлень вичерпано", "mapTitle": "Карта рутини", "ai": "ШІ робить", "human": "Людина перевіряє", "hours": "Години", "perWeek": "год/тиждень", "noData": "недостатньо даних", "similar": "Схожий проєкт", "next": "Наступний крок", "copy": "Копіювати", "copied": "Скопійовано", "cta": "Обговорити з директором StopRoutine →", "proj": {"app": "Застосунок ДМС зі ШІ-чатом", "tender": "Порівняння тендерів", "contracts": "Перевірка договорів", "uchet": "Облік замість 1С", "villa": "ШІ-управитель вілами", "site": "Сайт із заявками"}}, LANG="uk";
   var fab=document.getElementById('cs-fab'), panel=document.getElementById('cs-panel'), msgs=document.getElementById('cs-msgs');
@@ -1058,7 +1058,7 @@ html.cs-lock,html.cs-lock body{overflow:hidden}
     try{
       var q=new URLSearchParams(location.search).get('consultant');
       if(q){ var u=new URL(q);
-        if((u.protocol==='http:'&&/^(127\.0\.0\.1|localhost|\[::1\])$/.test(u.hostname))||(u.protocol==='https:'&&/\.supabase\.co$/.test(u.hostname))) url=q; }
+        if((u.protocol==='http:'&&/^(127\.0\.0\.1|localhost|\[::1\])$/.test(u.hostname))) url=q; }
     }catch(_){}
     return url;
   })();

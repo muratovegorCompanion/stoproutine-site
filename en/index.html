@@ -1046,7 +1046,7 @@ html.cs-lock,html.cs-lock body{overflow:hidden}
 <script>
 /* ===== AI-консультант / AI consultant: panel, chat, avatar clips, map card =====
    Endpoint: <meta name="consultant-endpoint">; empty = feature off. For testing, ?consultant=<url> overrides it
-   (only local addresses or https://*.supabase.co are accepted). */
+   (only local http addresses are accepted, so a link cannot point visitors at a foreign server). */
 (function(){
   var T={"lang": "en", "fab": "Map my routine with AI", "cap": "Egor Muratov's AI assistant", "close": "Close", "ph": "Your answer…", "send": "Send", "disc": "AI can make mistakes. Don't share your clients' personal data.", "greeting": "Hi! I'm Egor Muratov's AI assistant. I'll ask 5–7 short questions about your business and then show a \"Routine map\": three processes worth handing to AI first. Please don't share your clients' personal data.\n\nWhat does your company do?", "thinking": "The assistant is thinking", "error": "Could not get a reply. Your message is back in the box, please try again.", "rate": "Too many requests. Please try again in an hour or message us on Telegram.", "limit": "Message limit reached", "mapTitle": "Routine map", "ai": "What AI does", "human": "A person checks", "hours": "Hours", "perWeek": "h/week", "noData": "not enough data", "similar": "Similar project", "next": "Next step", "copy": "Copy", "copied": "Copied", "cta": "Discuss with the StopRoutine director →", "proj": {"app": "Corporate health insurance app with an AI chat", "tender": "Tender comparison", "contracts": "Contract review", "uchet": "Accounting instead of 1C", "villa": "AI villa manager", "site": "Website with inquiries"}}, LANG="en";
   var fab=document.getElementById('cs-fab'), panel=document.getElementById('cs-panel'), msgs=document.getElementById('cs-msgs');
@@ -1059,7 +1059,7 @@ html.cs-lock,html.cs-lock body{overflow:hidden}
     try{
       var q=new URLSearchParams(location.search).get('consultant');
       if(q){ var u=new URL(q);
-        if((u.protocol==='http:'&&/^(127\.0\.0\.1|localhost|\[::1\])$/.test(u.hostname))||(u.protocol==='https:'&&/\.supabase\.co$/.test(u.hostname))) url=q; }
+        if((u.protocol==='http:'&&/^(127\.0\.0\.1|localhost|\[::1\])$/.test(u.hostname))) url=q; }
     }catch(_){}
     return url;
   })();
