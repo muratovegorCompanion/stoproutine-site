@@ -402,6 +402,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .cs-av img,.cs-av video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cs-av video{opacity:0;transition:opacity .25s}
 .cs-av video.cs-on{opacity:1}
+.cs-snd{position:absolute;right:6px;bottom:6px;width:32px;height:32px;padding:0;border:0;border-radius:50%;background:rgba(5,8,13,.72);color:#fff;font-size:15px;line-height:32px;cursor:pointer}
+.cs-snd[hidden]{display:none}
+.cs-snd:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
 .cs-cap{font-size:.85rem;font-weight:600;color:var(--muted-dark)}
 .cs-msgs{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px;display:flex;flex-direction:column;gap:10px}
 .cs-m{max-width:88%;padding:10px 14px;border-radius:16px;white-space:pre-wrap;overflow-wrap:anywhere}
@@ -1075,15 +1078,32 @@ html.cs-lock,html.cs-lock body{overflow:hidden}
 
   /* --- avatar: greet once -> idle loop; think while waiting; present when the map arrives.
          Missing clips or reduced motion = the poster only. --- */
-  var clip='', avatarOff=false;
+  var clip='', avatarOff=false, snd=document.getElementById('cs-snd'), muteVoice=false;
+  /* The greeting has a spoken version when the video carries data-voice; it plays with sound
+     (opening the panel is a click, so browsers allow it) and falls back to muted if refused. */
+  function setSnd(){
+    if(!snd) return;
+    snd.textContent=vid.muted?'\u{1F507}':'\u{1F50A}';
+    snd.setAttribute('aria-pressed',vid.muted?'true':'false');
+    snd.setAttribute('aria-label',snd.getAttribute(vid.muted?'data-on':'data-off'));
+  }
   function playClip(name){
     if(avatarOff||reduced.matches||!vid) return;
     clip=name;
+    var voice=name==='greet'&&vid.getAttribute('data-voice');
     vid.loop=(name==='idle'||name==='think');
-    vid.src='/avatar/'+name+'.mp4';
+    vid.src=voice||('/avatar/'+name+'.mp4');
+    vid.muted=!voice||muteVoice;
+    if(snd){ snd.hidden=!voice; setSnd(); }
     var p; try{ p=vid.play(); }catch(_){}
-    if(p&&p.catch) p.catch(function(){});
+    if(p&&p.catch) p.catch(function(){
+      if(vid.muted) return;
+      vid.muted=true; setSnd();
+      var q; try{ q=vid.play(); }catch(_){}
+      if(q&&q.catch) q.catch(function(){});
+    });
   }
+  if(snd) snd.addEventListener('click',function(){ vid.muted=!vid.muted; muteVoice=vid.muted; setSnd(); });
   if(vid){
     vid.addEventListener('playing',function(){ vid.classList.add('cs-on') });
     vid.addEventListener('ended',function(){ if(clip==='greet'||clip==='present') playClip('idle') });
